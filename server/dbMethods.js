@@ -212,8 +212,9 @@ module.exports = {
 
     },
 
+
     //documentation
     updateInfected: (param) => {
-        //TODO all
+        //TODO all the things
     }
 };
