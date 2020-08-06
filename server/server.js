@@ -17,7 +17,14 @@ app.post('/api/ping', function (req, res) {
 
 });
 
-db.insertNewPerson(null);
+app.post('/api/insertNewBusiness', function (req, res) {
+    console.log('insertNewBusiness from Angular works!');
+    console.log(req.body.key);
+    db.insertNewBusiness(req.body.key);
+    res.send({
+        "statusCode": "200"
+    });
+});
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
 
