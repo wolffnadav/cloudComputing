@@ -26,99 +26,90 @@ module.exports = {
 
     //insert a new Business to the DB or if the business is in the DB we update only the Customer list
     insertNewBusiness: (param) => {
+        dynamodb.updateItem(param, function (err, data) {
+            if (err) console.log(err);
+            else console.log(data);           // successful response
+        });
+    },
+
+    updatecustomer: (param) => {
         param = {
             ExpressionAttributeNames: {
-                "#C": "Customers",
-                "#F": "Infected",
+                "#E": "Email",
                 "#N": "Name",
-                "#V": "Visitors",
-                "#A": "Address"
+                "#V": "Visited"
             },
             ExpressionAttributeValues: {
-                ":C": {
+                ":V": {
                     L: [{
                         SS: [
-                            "0544444",
-                            "6.10.2020 15:54:55"
-                            ]
-                        }
+                            "4",
+                            "6.7.2020 15:54:55"
                         ]
-                },
-                ":F": {
-                    N: "1"
+                    }
+                    ]
                 },
                 ":N": {
-                    S : "Nadav2"
+                    S: "Nadav2"
                 },
-                ":V": {
-                    N: "0"
-                },
-                ":A": {
-                    S: "Rosh Haayin"
+                ":E": {
+                    S: "Nadav@walla.com"
                 }
             },
             Key: {
-                "ID": {
-                    N: "3"
+                "PhoneNumber": {
+                    S: "0544654565"
                 }
             },
             ReturnValues: "ALL_NEW",
-            TableName: "Businesses",
-            UpdateExpression: "SET #C = list_append(#C, :C), #F = :F, #N = :N, #V = :V, #A = :A"
+            TableName: "Users",
+            UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
         };
 
-        dynamodb.updateItem(param, function(err, data) {
-            if (err){
+        dynamodb.updateItem(param, function (err, data) {
+            if (err) {
                 param2 = {
                     ExpressionAttributeNames: {
-                        "#C": "Customers",
-                        "#F": "Infected",
+                        "#E": "Email",
                         "#N": "Name",
-                        "#V": "Visitors",
-                        "#A": "Address"
+                        "#V": "Visited"
                     },
                     ExpressionAttributeValues: {
-                        ":C": {
+                        ":V": {
                             L: [{
                                 SS: [
-                                    "0544444",
-                                    "6.8.2020 14:54:55"
+                                    "2",
+                                    "6.10.2020 15:54:55"
                                 ]
                             }
                             ]
                         },
-                        ":F": {
-                            N: "1"
-                        },
                         ":N": {
-                            S : "Nadav2"
+                            S: "Nadav2"
                         },
-                        ":V": {
-                            N: "0"
-                        },
-                        ":A": {
-                            S: "Rosh Haayin"
+                        ":E": {
+                            S: "Nadav@walla.com"
                         }
                     },
                     Key: {
-                        "ID": {
-                            N: "3"
+                        "PhoneNumber": {
+                            S: "0544654565"
                         }
                     },
                     ReturnValues: "ALL_NEW",
-                    TableName: "Businesses",
-                    UpdateExpression: "SET #C = :C, #F = :F, #N = :N, #V = :V, #A = :A"
+                    TableName: "Users",
+                    UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
                 };
-                dynamodb.updateItem(param2, function(err, data){
+                dynamodb.updateItem(param2, function (err, data) {
                     if (err) console.log(err);
                     else console.log(data);
-            })
+                })
             }
-            else     console.log(data);           // successful response
+            else console.log(data);           // successful response
         });
-    },
 
-    //insert a new User to the DB or if the user is in the DB we update only the Visited list
+    },
+//insert a new User to the DB or if the user is in the DB we update only the Visited list
     insertNewPerson: (param) => {
         param = {
             ExpressionAttributeNames: {
@@ -137,7 +128,7 @@ module.exports = {
                     ]
                 },
                 ":N": {
-                    S : "Nadav2"
+                    S: "Nadav2"
                 },
                 ":E": {
                     S: "Nadav@walla.com"
@@ -153,8 +144,8 @@ module.exports = {
             UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
         };
 
-        dynamodb.updateItem(param, function(err, data) {
-            if (err){
+        dynamodb.updateItem(param, function (err, data) {
+            if (err) {
                 param2 = {
                     ExpressionAttributeNames: {
                         "#E": "Email",
@@ -172,7 +163,7 @@ module.exports = {
                             ]
                         },
                         ":N": {
-                            S : "Nadav2"
+                            S: "Nadav2"
                         },
                         ":E": {
                             S: "Nadav@walla.com"
@@ -187,18 +178,42 @@ module.exports = {
                     TableName: "Users",
                     UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
                 };
-                dynamodb.updateItem(param2, function(err, data){
+                dynamodb.updateItem(param2, function (err, data) {
                     if (err) console.log(err);
                     else console.log(data);
                 })
             }
-            else     console.log(data);           // successful response
+            else console.log(data);           // successful response
         });
 
     },
 
     //documentation
-    updateInfected: (param) => {
-        //TODO all the things
+    updateInfected:
+        (param) => {
+            //TODO all the things
+        },
+    //documentation
+    getLastId: async () => {
+        let rand;
+        let flag = true;
+        while (flag) {
+            rand = (Math.random() * 100000) | 0;
+            let params = {
+                TableName: "Businesses",
+                KeyConditionExpression: "ID = :I",
+                ExpressionAttributeValues: {":I": {S: "5"}}
+            };
+            dynamodb.query(params, function (err, data) {
+                console.log("1224243");
+                if (err) {
+                    flag = false;
+                    console.log(err);
+                }
+                else console.log(data);           // successful response
+            });
+        }
+        return rand.toString();
     }
-};
+}
+;

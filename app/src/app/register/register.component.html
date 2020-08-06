@@ -1,6 +1,9 @@
 
-
-  <div class="form-group"> <!-- Register Button -->
-    <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
-  </div>
+<div class="form-group">
+  <H4 >Insert Business</H4>
+  <input [(ngModel)]="BusinessName" type="text" class="form-control" id="name" placeholder="NAME" required name="name">
+  <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address" placeholder="ADDRESS" required name="name">
+  <br>
+  <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
+</div>
 

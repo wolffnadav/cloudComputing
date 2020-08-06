@@ -14,16 +14,34 @@ app.post('/api/ping', function (req, res) {
         "statusCode": "200",
         "body": "Ping"
     });
-
 });
 
-app.post('/api/insertNewBusiness', function (req, res) {
-    console.log('insertNewBusiness from Angular works!');
-    console.log(req.body.key);
-    db.insertNewBusiness(req.body.key);
+app.post('/api/insertNewBusiness', async function (req, res) {
+    console.log('insertNewBusiness Starting...');
+    let lastid = db.getLastId();
+    let insertNewBusinessParam = {
+        ExpressionAttributeNames: {
+            "#F": "Infected",
+            "#N": "Name",
+            "#V": "Visitors",
+            "#A": "Address"
+        },
+        ExpressionAttributeValues: {
+            ":F": {N: "0"},
+            ":N": {S: req.body.name},
+            ":V": {N: "0"},
+            ":A": {S: req.body.address}
+        },
+        Key: {"ID": {N: lastid.toString()}, "Date": {S: Date.now().toString()}},
+        ReturnValues: "ALL_NEW",
+        TableName: "Businesses",
+        UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A"
+    };
+    db.insertNewBusiness(insertNewBusinessParam);
     res.send({
         "statusCode": "200"
     });
+    console.log('insertNewBusiness Finished...');
 });
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
