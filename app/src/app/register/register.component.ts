@@ -10,6 +10,7 @@ export class RegisterComponent {
   user = {id: 1, name: 'Hello'};
 
   constructor(private http: HttpClient) {
+    this.callServer()
   }
 
   callServer() {
