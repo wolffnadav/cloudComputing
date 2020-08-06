@@ -7,13 +7,12 @@ aws = require('aws-sdk');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/api/get-images', (req, res) => {
-            console.log('Get images done successfully! ');
-            res.send(
-                {
-                    "statusCode": "200",
-                    "images": imagesUrlArray
-                })// successful response
+app.post('/api/ping', function (req, res) {
+    console.log('Ping from Angular works!');
+    res.send({
+        "statusCode": "200",
+        "body": "Ping"
+    });
 
 });
 
