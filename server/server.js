@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 bodyParser = require('body-parser');
-const db = require('./dbMethods');
-const config = require('./config/config');
+const { db } = require('./dbMethods');
+const { v4 : uuidV4 } = require('uuid');
+const { config } = require('./config/config');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -18,7 +19,7 @@ app.post('/api/ping', function (req, res) {
 
 app.post('/api/insertNewBusiness', async function (req, res) {
     console.log('insertNewBusiness Starting...');
-    let lastid = db.getLastId();
+    let newID = uuid();
     let insertNewBusinessParam = {
         ExpressionAttributeNames: {
             "#F": "Infected",
@@ -32,7 +33,7 @@ app.post('/api/insertNewBusiness', async function (req, res) {
             ":V": {N: "0"},
             ":A": {S: req.body.address}
         },
-        Key: {"ID": {N: lastid.toString()}, "Date": {S: Date.now().toString()}},
+        Key: {"ID": {N: newID.toString()}},
         ReturnValues: "ALL_NEW",
         TableName: "Businesses",
         UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A"
@@ -45,5 +46,3 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 });
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
-
-
