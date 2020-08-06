@@ -5,9 +5,6 @@ bodyParser = require('body-parser');
 const db = require('./dbMethods');
 const config = require('./config/config');
 
-console.log(`User: ${db.isTableExist()}`);
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -20,7 +17,8 @@ app.post('/api/ping', function (req, res) {
 
 });
 
+db.insertNewPerson(null);
 
-app.listen(port, () => console.log(+`app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
 
 
