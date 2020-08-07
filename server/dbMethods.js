@@ -1,7 +1,7 @@
 const config = require('./config/config');
 aws = require('aws-sdk');
 
-var dynamodb = new aws.DynamoDB({
+const dynamodb = new aws.DynamoDB({
     signatureVersion: 'v4',
     region: config.region,
     accessKeyId: config.accessKeyId,
@@ -28,7 +28,7 @@ module.exports = {
     insertNewBusiness: (param, businessID, businessName) => {
 
         //enter the new business to the Businesses table
-        dynamodb.updateItem(param, function (err, data) {
+        dynamodb.updateItem(param, function (err) {
             if (err) console.log(err);
             else console.log("inserted new business");           // successful response
         });
@@ -47,7 +47,7 @@ module.exports = {
             UpdateExpression: "SET #ID = :ID"
         };
 
-        dynamodb.updateItem(param2, function (err, data) {
+        dynamodb.updateItem(param2, function (err) {
             if (err) console.log(err);
             else console.log("inserted new ID to BusinessNameToID");       // successful response
         });
@@ -57,8 +57,8 @@ module.exports = {
 
 
     // update the users table, if a new user scans the barcode he will be entered to the Users table for the first time
-    // otherwize the new barcode scan will be added to the Visited list
-    updatecustomer: (param, param2) => {
+    // otherwise the new barcode scan will be added to the Visited list
+    updateCustomer: (param, param2) => {
 
         dynamodb.updateItem(param, function (err, data) {
             if (err) {
@@ -76,11 +76,26 @@ module.exports = {
     //get business ID, given Business Name we return Business ID
     //TODO
     getBusinessID: (businessName)=> {
-        return 'd2bbe0cc-0166-4c57-92c5-ababf16218d5'
+        let param = {
+            TableName : "BusinessNameToID",
+            KeyConditionExpression: "#Name = :Name",
+            ExpressionAttributeNames:{
+                "#Name": "BusinessName"
+            },
+            ExpressionAttributeValues: {
+                ":Name": businessName
+            }
+        };
+        let businessID = dynamodb.query(param, function(err, data){
+            if(err) console.log(err);
+            else {return data}
+        })
+        return businessID
+        // return 'd2bbe0cc-0166-4c57-92c5-ababf16218d5'
     },
 
 
-    //documentation
+    //send a notification to all users how got infected that they are in risk and should be quarantine
     updateInfected: (param) => {
             //TODO all the things
         }

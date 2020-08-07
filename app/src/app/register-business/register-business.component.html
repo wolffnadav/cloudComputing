@@ -1,0 +1,10 @@
+
+<! -- business register component -->
+<div class="form-group">
+  <H4 >Insert Business</H4>
+  <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname" placeholder="NAME" required name="name">
+  <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address" placeholder="ADDRESS" required name="name">
+  <br>
+  <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
+</div>
+

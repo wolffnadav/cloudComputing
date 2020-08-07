@@ -84,7 +84,7 @@ app.post('/api/insertNewPerson', async function (req, res) {
         UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
     };
 
-    db.updatecustomer(updatePersonParam, insertNewPersonParam);
+    db.updateCustomer(updatePersonParam, insertNewPersonParam);
 
     res.send({
         "statusCode": "200"
