@@ -35,12 +35,8 @@ module.exports = {
 
         //enter the businessID to the BusinessNameToID
         let param2 = {
-            ExpressionAttributeNames: {
-                "#ID": "ID"
-            },
-            ExpressionAttributeValues: {
-                ":ID": {S: businessID},
-            },
+            ExpressionAttributeNames: { "#ID": "ID"},
+            ExpressionAttributeValues: {":ID": {S: businessID},},
             Key: {"BusinessName": {S: businessName}},
             ReturnValues: "ALL_NEW",
             TableName: "BusinessNameToID",
@@ -64,10 +60,10 @@ module.exports = {
             if (err) {
                 dynamodb.updateItem(param2, function (err, data) {
                     if (err) console.log(err);
-                    else console.log(data);
+                    else console.log("Persons visited list was updated");
                 })
             }
-            else console.log(data);           // successful response
+            else console.log("new user was added to DB");           // successful response
         });
 
     },
@@ -75,22 +71,20 @@ module.exports = {
 
     //get business ID, given Business Name we return Business ID
     //TODO
-    getBusinessID: (businessName)=> {
+    getBusinessID: async (businessName, func)=> {
+
         let param = {
             TableName : "BusinessNameToID",
-            KeyConditionExpression: "#Name = :Name",
-            ExpressionAttributeNames:{
-                "#Name": "BusinessName"
-            },
-            ExpressionAttributeValues: {
-                ":Name": businessName
-            }
+            Key: { "BusinessName": {"S": businessName} },
+            ProjectionExpression: 'ID'
         };
-        let businessID = dynamodb.query(param, function(err, data){
+        await dynamodb.getItem(param, await function(err, data){
             if(err) console.log(err);
-            else {return data}
-        })
-        return businessID
+            else {
+                console.log("1 - " + data.Item.ID.S);
+                func(data.Item.ID.S);
+            }
+        });
         // return 'd2bbe0cc-0166-4c57-92c5-ababf16218d5'
     },
 

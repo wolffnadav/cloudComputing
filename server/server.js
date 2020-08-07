@@ -49,8 +49,13 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 //person uses our service, this will the person to the DB if that is his first use or add a new entry to his Visited list
 app.post('/api/insertNewPerson', async function (req, res) {
     //query Business table to find the Business ID
-    let businessID = db.getBusinessID(req.body.business);
+    let businessID;
+    db.getBusinessID(req.body.business, function(data) {
+        businessID = data;
+    });
     let timeStamp = new Date().toString();
+
+    console.log("businessID = " + businessID);
 
     let updatePersonParam = {
         ExpressionAttributeNames: {
@@ -63,7 +68,6 @@ app.post('/api/insertNewPerson', async function (req, res) {
             ":N": { S: req.body.username},
             ":E": { S: req.body.email } },
         Key: { "PhoneNumber": { S: req.body.number } },
-        ReturnValues: "ALL_NEW",
         TableName: "Users",
         UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
     };
@@ -79,7 +83,6 @@ app.post('/api/insertNewPerson', async function (req, res) {
             ":N": { S: req.body.username},
             ":E": { S: req.body.email } },
         Key: { "PhoneNumber": { S: req.body.number } },
-        ReturnValues: "ALL_NEW",
         TableName: "Users",
         UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
     };
