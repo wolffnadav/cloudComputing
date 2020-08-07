@@ -192,28 +192,6 @@ module.exports = {
     updateInfected:
         (param) => {
             //TODO all the things
-        },
-    //documentation
-    getLastId: async () => {
-        let rand;
-        let flag = true;
-        while (flag) {
-            rand = (Math.random() * 100000) | 0;
-            let params = {
-                TableName: "Businesses",
-                KeyConditionExpression: "ID = :I",
-                ExpressionAttributeValues: {":I": {S: "5"}}
-            };
-            dynamodb.query(params, function (err, data) {
-                console.log("1224243");
-                if (err) {
-                    flag = false;
-                    console.log(err);
-                }
-                else console.log(data);           // successful response
-            });
         }
-        return rand.toString();
-    }
 }
 ;
