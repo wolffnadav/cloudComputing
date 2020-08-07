@@ -19,5 +19,8 @@
     "http-errors": "~1.6.3",
     "multer": "^1.4.2",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "uuid": "^8.3.0"
   }
 }
