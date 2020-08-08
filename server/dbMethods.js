@@ -30,7 +30,7 @@ module.exports = {
         //enter the new business to the Businesses table
         dynamodb.updateItem(param, function (err) {
             if (err) console.log(err);
-            else console.log("inserted new business");           // successful response
+            else console.log("inserted new business to Business Table");           // successful response
         });
 
         //enter the businessID to the BusinessNameToID
@@ -45,7 +45,7 @@ module.exports = {
 
         dynamodb.updateItem(param2, function (err) {
             if (err) console.log(err);
-            else console.log("inserted new ID to BusinessNameToID");       // successful response
+            else console.log("inserted new ID to BusinessNameToID Table");       // successful response
         });
 
 
@@ -55,33 +55,29 @@ module.exports = {
     // update the users table, if a new user scans the barcode he will be entered to the Users table for the first time
     // otherwise the new barcode scan will be added to the Visited list
     updateCustomer: (param, param2) => {
-
         dynamodb.updateItem(param, function (err) {
             if (err) {
                 dynamodb.updateItem(param2, function (err) {
                     if (err) console.log(err);
-                    else console.log("Persons visited list was updated");
+                    else console.log("new user was added to DB");
                 })
             }
-            else console.log("new user was added to DB");           // successful response
+            else console.log("Persons visited list was updated");
         });
-
     },
 
 
     //get business ID, given Business Name we return Business ID
-    //TODO
     getBusinessID: async (businessName)=> {
-
         let param = {
             TableName : "BusinessNameToID",
             Key: { "BusinessName": {"S": businessName} },
             ProjectionExpression: 'ID'
         };
-        return dynamodb.getItem(param, function(err, data){
+        return await dynamodb.getItem(param, function(err, data){
             if(err) console.log(err);
             else {
-                console.log("1 - " + data.Item.ID.S);
+                console.log("business ID is: " + data.Item.ID.S);
             }
         }).promise();
     },
@@ -89,7 +85,7 @@ module.exports = {
 
     //send a notification to all users how got infected that they are in risk and should be quarantine
     updateInfected: (param) => {
-            //TODO all the things
+            //TODO - this should be a lambada function on AWS
         }
 }
 ;

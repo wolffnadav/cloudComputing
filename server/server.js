@@ -4,7 +4,6 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const db = require('./dbMethods');
 const { v4 : uuidV4 } = require('uuid');
-//const { config } = require('./config/config');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -46,16 +45,15 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 });
 
 
-//person uses our service, this will the person to the DB if that is his first use or add a new entry to his Visited list
+//person uses our service, this will enter the person to the DB if that is his first use or add a new entry to his Visited list
+//TODO currently if business entered is not in Business table this throws an error
 app.post('/api/insertNewPerson', async function (req, res) {
     //query Business table to find the Business ID
     let businessID = await db.getBusinessID(req.body.business);
     businessID = businessID.Item.ID.S;
-    console.log(businessID)
-
     let timeStamp = new Date().toString();
 
-    let updatePersonParam = {
+    let updateVisitedListParam = {
         ExpressionAttributeNames: {
             "#E": "Email",
             "#N": "Name",
@@ -85,7 +83,7 @@ app.post('/api/insertNewPerson', async function (req, res) {
         UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
     };
 
-    db.updateCustomer(updatePersonParam, insertNewPersonParam);
+    db.updateCustomer(updateVisitedListParam, insertNewPersonParam);
 
     res.send({
         "statusCode": "200"
