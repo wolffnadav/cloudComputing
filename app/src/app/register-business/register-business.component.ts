@@ -10,8 +10,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RegisterBusinessComponent {
 
   //Business information
-  private businessName: String;
-  private businessAddress: String;
+  public businessName: String;
+  public businessAddress: String;
 
   constructor(private http: HttpClient) {
   }
@@ -59,7 +59,7 @@ export class RegisterBusinessComponent {
   //check that inputTxt is containing only characters and numbers
   alphaNumericCheck(inputTxt) {
     const letters = /^[0-9a-zA-Z ]+$/;
-    return (inputTxt.match(letters))? true : false;
+    return (inputTxt.match(letters));
   }
 
 }

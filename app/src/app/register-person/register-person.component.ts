@@ -10,10 +10,10 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RegisterPersonComponent {
 
   //User info
-  private userPhoneNumber: String;
-  private userName: String;
-  private userEmail: String;
-  private businessEntered: String;
+  public userPhoneNumber: String;
+  public userName: String;
+  public userEmail: String;
+  public businessEntered: String;
 
   constructor(private http: HttpClient) {
   }
