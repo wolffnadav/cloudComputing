@@ -23,7 +23,7 @@ export class RegisterPersonComponent {
     //first check the input is valid
     //both text boxes must be filed
     if(this.userPhoneNumber == undefined || this.userName == undefined || this.userEmail == undefined || this.businessEntered == undefined){
-      this.failAlert('Address and Name fields must be filed!')
+      this.failAlert('Address and Name fields must be filed!');
       return;
     }
     //check that all characters entered in Name and Business fields are alphaNumeric
@@ -34,18 +34,18 @@ export class RegisterPersonComponent {
 
     //check phone number - important check - this is out primary key so it must be unique
     if(!this.numericCheck(this.userPhoneNumber)){
-      this.failAlert('Only numbers are allowed in Phone Number field')
-      return
+      this.failAlert('Only numbers are allowed in Phone Number field');
+      return;
     }
     if(this.userPhoneNumber.length != 10){
-      this.failAlert('Phone number must contain exactly 10 Numbers')
-      return
+      this.failAlert('Phone number must contain exactly 10 Numbers');
+      return;
     }
 
     //check email
     if(!this.emailCheck(this.userEmail)){
-      this.failAlert('The Email entered is not valid')
-      return
+      this.failAlert('The Email entered is not valid');
+      return;
     }
 
     //after input is valid send the data to the backend server

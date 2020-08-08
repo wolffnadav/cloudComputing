@@ -1,9 +1,22 @@
+//express configurations
 const express = require('express');
 const app = express();
 const port = 3000;
+
+//other configurations
 const bodyParser = require('body-parser');
 const db = require('./dbMethods');
 const { v4 : uuidV4 } = require('uuid');
+
+//aws configuration
+const config = require('./config/config');
+aws = require('aws-sdk');
+const dynamodb = new aws.DynamoDB({
+    signatureVersion: 'v4',
+    region: config.region,
+    accessKeyId: config.accessKeyId,
+    secretAccessKey: config.secretAccessKey
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -49,45 +62,69 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 //TODO currently if business entered is not in Business table this throws an error
 app.post('/api/insertNewPerson', async function (req, res) {
     //query Business table to find the Business ID
-    let businessID = await db.getBusinessID(req.body.business);
-    businessID = businessID.Item.ID.S;
-    let timeStamp = new Date().toString();
+    function getBusinessIDAndUpdateCustomers(businessName, userName, email, phoneNumber){
+        //get business ID
+        let param = {
+            TableName : "BusinessNameToID",
+            Key: { "BusinessName": {"S": businessName} },
+            ProjectionExpression: 'ID'
+        };
+        dynamodb.getItem(param, function(err, data){
+            if(err) {
+                console.log(err);
+            }
+            else {
+                let businessID = data.Item.ID.S;
+                updateCustomer(businessID, userName, email, phoneNumber);
+            }
+        });
+    }
 
-    let updateVisitedListParam = {
-        ExpressionAttributeNames: {
-            "#E": "Email",
-            "#N": "Name",
-            "#V": "Visited"
-        },
-        ExpressionAttributeValues: {
-            ":V": { L: [{ SS: [timeStamp, businessID ] } ] },
-            ":N": { S: req.body.username},
-            ":E": { S: req.body.email } },
-        Key: { "PhoneNumber": { S: req.body.number } },
-        TableName: "Users",
-        UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
-    };
+    //update the customer table with the businessID
+    function updateCustomer(businessID, userName, email, phoneNumber){
+        let timeStamp = new Date().toString();
 
-    let insertNewPersonParam = {
-        ExpressionAttributeNames: {
-            "#E": "Email",
-            "#N": "Name",
-            "#V": "Visited"
-        },
-        ExpressionAttributeValues: {
-            ":V": { L: [{ SS: [businessID, timeStamp ] } ] },
-            ":N": { S: req.body.username},
-            ":E": { S: req.body.email } },
-        Key: { "PhoneNumber": { S: req.body.number } },
-        TableName: "Users",
-        UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
-    };
+        let updateVisitedListParam = {
+            ExpressionAttributeNames: {
+                "#E": "Email",
+                "#N": "Name",
+                "#V": "Visited"
+            },
+            ExpressionAttributeValues: {
+                ":V": { L: [{ SS: [businessID, timeStamp ] } ] },
+                ":N": { S: userName},
+                ":E": { S: email } },
+            Key: { "PhoneNumber": { S: phoneNumber } },
+            TableName: "Users",
+            UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
+        };
 
-    db.updateCustomer(updateVisitedListParam, insertNewPersonParam);
+        let insertNewPersonParam = {
+            ExpressionAttributeNames: {
+                "#E": "Email",
+                "#N": "Name",
+                "#V": "Visited"
+            },
+            ExpressionAttributeValues: {
+                ":V": { L: [{ SS: [businessID, timeStamp ] } ] },
+                ":N": { S: userName},
+                ":E": { S: email } },
+            Key: { "PhoneNumber": { S: phoneNumber } },
+            TableName: "Users",
+            UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
+        };
 
+        //this update has two parameters, depending on the case it uses one of them
+        //after update is done another callback function is called to send back the 200 response
+        db.updateCustomer(updateVisitedListParam, insertNewPersonParam);
+    }
+
+    //this called the two functions above it first gets the BusinessID by querying the BusinessNameToID table
+    //and after this is done, it uses a callback function to update the Users table
+    getBusinessIDAndUpdateCustomers(req.body.business, req.body.username, req.body.email, req.body.number, updateCustomer());
     res.send({
         "statusCode": "200"
-    });
+    })
 });
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));

@@ -57,9 +57,12 @@ module.exports = {
     updateCustomer: (param, param2) => {
         dynamodb.updateItem(param, function (err) {
             if (err) {
-                dynamodb.updateItem(param2, function (err) {
-                    if (err) console.log(err);
-                    else console.log("new user was added to DB");
+                dynamodb.updateItem(param2, function (err2) {
+                    if (err2) {
+                        console.log("weird error in updateCustomer - look into this later");
+                    } else {
+                        console.log("new user was added to DB");
+                    }
                 })
             }
             else console.log("Persons visited list was updated");
@@ -68,19 +71,20 @@ module.exports = {
 
 
     //get business ID, given Business Name we return Business ID
-    getBusinessID: async (businessName)=> {
-        let param = {
-            TableName : "BusinessNameToID",
-            Key: { "BusinessName": {"S": businessName} },
-            ProjectionExpression: 'ID'
-        };
-        return await dynamodb.getItem(param, function(err, data){
-            if(err) console.log(err);
-            else {
-                console.log("business ID is: " + data.Item.ID.S);
-            }
-        }).promise();
-    },
+    // getBusinessID: async (businessName)=> {
+    //     let param = {
+    //         TableName : "BusinessNameToID",
+    //         Key: { "BusinessName": {"S": businessName} },
+    //         ProjectionExpression: 'ID'
+    //     };
+    //
+    //     return await dynamodb.getItem(param, function(err, data){
+    //         if(err) console.log(err);
+    //         else {
+    //             console.log("business ID is: " + data.Item.ID.S);
+    //         }
+    //     }).promise();
+    // },
 
 
     //send a notification to all users how got infected that they are in risk and should be quarantine
