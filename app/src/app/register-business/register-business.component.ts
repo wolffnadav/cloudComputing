@@ -13,8 +13,7 @@ export class RegisterBusinessComponent {
   public businessName: String;
   public businessAddress: String;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   //when business owner presses to register his business
   insertNewBusiness() {

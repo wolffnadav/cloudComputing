@@ -29,8 +29,9 @@ app.post('/api/ping', function (req, res) {
     });
 });
 
+
 //business signs up for our service for the first time, this will add the business to our Business table in dynamoDB
-app.post('/api/insertNewBusiness', async function (req, res) {
+app.post('/api/insertNewBusiness', function (req, res) {
     let newID = uuidV4();
     let insertNewBusinessParam = {
         ExpressionAttributeNames: {
@@ -60,7 +61,7 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 
 //person uses our service, this will enter the person to the DB if that is his first use or add a new entry to his Visited list
 //TODO currently if business entered is not in Business table this throws an error
-app.post('/api/insertNewPerson', async function (req, res) {
+app.post('/api/insertNewPerson', function (req, res) {
     //query Business table to find the Business ID
     function getBusinessIDAndUpdateCustomers(businessName, userName, email, phoneNumber){
         //get business ID
@@ -125,6 +126,18 @@ app.post('/api/insertNewPerson', async function (req, res) {
     res.send({
         "statusCode": "200"
     })
+});
+
+
+//user noticed that he got infected - this will send an alert to all users who are in risk
+//TODO
+app.post('/api/sendInfectedAlert', function (req, res) {
+    //find in which restaurants our user was during his infectious time
+    //TODO
+
+    //send a text message to all users that were in the same places our infectious user was
+    //TODO
+
 });
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
