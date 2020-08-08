@@ -49,13 +49,11 @@ app.post('/api/insertNewBusiness', async function (req, res) {
 //person uses our service, this will the person to the DB if that is his first use or add a new entry to his Visited list
 app.post('/api/insertNewPerson', async function (req, res) {
     //query Business table to find the Business ID
-    let businessID;
-    db.getBusinessID(req.body.business, function(data) {
-        businessID = data;
-    });
-    let timeStamp = new Date().toString();
+    let businessID = await db.getBusinessID(req.body.business);
+    businessID = businessID.Item.ID.S;
+    console.log(businessID)
 
-    console.log("businessID = " + businessID);
+    let timeStamp = new Date().toString();
 
     let updatePersonParam = {
         ExpressionAttributeNames: {

@@ -12,16 +12,16 @@ const dynamodb = new aws.DynamoDB({
 module.exports = {
 
     //Checks whether the given TableName exists
-    isTableExist: () => {
-        let params = { TableName: 'Businesses' };
-        dynamodb.waitFor('tableExists', params, function (err, data) {
-            if (err) console.log(err, err.stack); // an error occurred
-            else {
-                console.log("Connect to DynamoDb Successful!! :) ");
-                console.log(data);           // successful response
-            }
-        });
-    },
+    // isTableExist: () => {
+    //     let params = { TableName: 'Businesses' };
+    //     dynamodb.waitFor('tableExists', params, function (err, data) {
+    //         if (err) console.log(err, err.stack); // an error occurred
+    //         else {
+    //             console.log("Connect to DynamoDb Successful!! :) ");
+    //             console.log(data);           // successful response
+    //         }
+    //     });
+    // },
 
 
     //insert a new Business to the DB or if the business is in the DB we update only the Customer list
@@ -56,9 +56,9 @@ module.exports = {
     // otherwise the new barcode scan will be added to the Visited list
     updateCustomer: (param, param2) => {
 
-        dynamodb.updateItem(param, function (err, data) {
+        dynamodb.updateItem(param, function (err) {
             if (err) {
-                dynamodb.updateItem(param2, function (err, data) {
+                dynamodb.updateItem(param2, function (err) {
                     if (err) console.log(err);
                     else console.log("Persons visited list was updated");
                 })
@@ -71,21 +71,19 @@ module.exports = {
 
     //get business ID, given Business Name we return Business ID
     //TODO
-    getBusinessID: async (businessName, func)=> {
+    getBusinessID: async (businessName)=> {
 
         let param = {
             TableName : "BusinessNameToID",
             Key: { "BusinessName": {"S": businessName} },
             ProjectionExpression: 'ID'
         };
-        await dynamodb.getItem(param, await function(err, data){
+        return dynamodb.getItem(param, function(err, data){
             if(err) console.log(err);
             else {
                 console.log("1 - " + data.Item.ID.S);
-                func(data.Item.ID.S);
             }
-        });
-        // return 'd2bbe0cc-0166-4c57-92c5-ababf16218d5'
+        }).promise();
     },
 
 
