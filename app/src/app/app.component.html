@@ -1,9 +1,17 @@
-<nav>
-  <ul>
-    <li><a routerLink="/newBusiness" routerLinkActive="active">newBusiness</a></li>
-    <li><a routerLink="/registerPerson" routerLinkActive="active">registerPerson</a></li>
-    <li><a routerLink="/analytics" routerLinkActive="active">analytics</a></li>
-    <li><a routerLink="/home" routerLinkActive="active">home</a></li>
-  </ul>
-</nav>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>SimpleCRM</h1>
+    <span class="menu-spacer"></span>
+    <div class="navButtons">
+      <a mat-button [routerLink]="'/home'" routerLinkActive="active"> home </a>
+      <a mat-button [routerLink]="'/newBusiness'" routerLinkActive="active"> newBusiness </a>
+      <a mat-button [routerLink]="'/registerPerson'" routerLinkActive="active"> registerPerson </a>
+      <a mat-button [routerLink]="'/analytics'" routerLinkActive="active"> analytics </a>
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>
