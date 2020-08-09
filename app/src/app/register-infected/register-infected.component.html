@@ -1,0 +1,8 @@
+<! -- register infected component -->
+<div class="form-group">
+  <H4 >Insert your infection details</H4>
+  <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="PHONE NUMBER" required name="name">
+  <input [(ngModel)]="dateOfNotice" type="text" class="form-control" id="dateOfNotice" placeholder="DATE OF NOTICE" required name="name">
+  <br>
+  <button type="submit" (click)="sendInfectedAlert()" class="btn btn-primary">Register</button>
+</div>

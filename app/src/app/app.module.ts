@@ -10,6 +10,7 @@ import {AnalyticsComponent} from './analytics/analytics.component';
 import {RegisterBusinessComponent} from './register-business/register-business.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterPersonComponent } from './register-person/register-person.component';
+import { RegisterInfectedComponent } from './register-infected/register-infected.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AnalyticsComponent,
     RegisterBusinessComponent,
     HomeComponent,
-    RegisterPersonComponent
+    RegisterPersonComponent,
+    RegisterInfectedComponent
   ],
   imports: [
     BrowserModule,
