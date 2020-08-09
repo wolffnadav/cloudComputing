@@ -11,8 +11,9 @@ export class RegisterInfectedComponent {
 
   //Notice Info
   public phoneNumber: String;
-  public dateOfNotice: String;
-
+  public dateOfNotice: any;
+  public dateOfNoticeTimeStamp: any;
+  public max = new Date();
   constructor(private http: HttpClient) { }
 
   //when a user enter a notice of infection - alert all relevant user of their danger
@@ -33,12 +34,11 @@ export class RegisterInfectedComponent {
       this.failAlert('Phone number must contain exactly 10 Numbers');
       return;
     }
-
-    //check date of notice is in correct form
-    //TODO
+    //Change date to timestamp
+    this.dateOfNoticeTimeStamp = new Date(this.dateOfNotice).getTime();
 
     //after input is valid send the data to the backend server
-    this.http.post<any>('/api/sendInfectedAlert', {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNotice})
+    this.http.post<any>('/api/sendInfectedAlert', {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNoticeTimeStamp.toString()})
       .subscribe(data => {
         console.log(data.statusCode);
         this.successAlert("Your notice was recorded, you will remain anonymous to all users :) ")
