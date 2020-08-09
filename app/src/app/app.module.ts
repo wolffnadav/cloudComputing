@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 import {AppComponent} from './app.component';
 import {AnalyticsComponent} from './analytics/analytics.component';
@@ -20,7 +21,7 @@ import {RegisterInfectedComponent} from './register-infected/register-infected.c
     RegisterBusinessComponent,
     HomeComponent,
     RegisterPersonComponent,
-    RegisterInfectedComponent
+    RegisterInfectedComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import {RegisterInfectedComponent} from './register-infected/register-infected.c
     AppRoutingModule,
     FormsModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    AutocompleteLibModule
 
   ],
   providers: [],

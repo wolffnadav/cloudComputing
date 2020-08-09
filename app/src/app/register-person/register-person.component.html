@@ -1,10 +1,32 @@
 <! -- user register component -->
 <div class="form-group">
-  <H4 >Insert User Data</H4>
-  <input [(ngModel)]="userPhoneNumber" type="text" class="form-control" id="number" placeholder="PHONE NUMBER" required name="name">
+  <H4>Insert User Data</H4>
+  <input [(ngModel)]="userPhoneNumber" type="text" class="form-control" id="number" placeholder="PHONE NUMBER" required
+         name="name">
   <input [(ngModel)]="userName" type="text" class="form-control" id="username" placeholder="NAME" required name="name">
   <input [(ngModel)]="userEmail" type="text" class="form-control" id="email" placeholder="EMAIL" required name="name">
-  <input [(ngModel)]="businessEntered" type="text" class="form-control" id="businessentered" placeholder="BUSINESS" required name="name">
-  <br>
+  <div class="ng-autocomplete dropdown">
+    <ng-autocomplete
+      [data]="data"
+      [searchKeyword]="keyword"
+      (selected)='selectEvent($event)'
+      (inputChanged)='onChangeSearch($event)'
+      (inputFocused)='onFocused($event)'
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+      [placeHolder]="'Business name'">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+    <br>
+  </div>
+
   <button type="submit" (click)="insertNewPerson()" class="btn btn-primary">Register</button>
 </div>
+
