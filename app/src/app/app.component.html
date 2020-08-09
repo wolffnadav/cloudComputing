@@ -1,26 +1,25 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-    <h1>SimpleCRM</h1>
-    <span class="menu-spacer"></span>
-    <div class="navButtons">
-      <a mat-button [routerLink]="'/home'" routerLinkActive="active"> home </a>
-      <a mat-button [routerLink]="'/newBusiness'" routerLinkActive="active"> newBusiness </a>
-      <a mat-button [routerLink]="'/registerPerson'" routerLinkActive="active"> registerPerson </a>
-      <a mat-button [routerLink]="'/analytics'" routerLinkActive="active"> analytics </a>
 
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
-<nav>
-  <ul>
-    <li><a routerLink="/newBusiness" routerLinkActive="active">Register New Business</a></li>
-    <li><a routerLink="/registerPerson" routerLinkActive="active">Register Person</a></li>
-    <li><a routerLink="/analytics" routerLinkActive="active">Analytics</a></li>
-    <li><a routerLink="/registerInfected" routerLinkActive="active">Register Infected</a></li>
-    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" [routerLink]="'/home'">Anti Covid-19</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item " [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/home'">Home <span class="sr-only">(current)</span></a>
+      </li >
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/newBusiness'">Register New Business<span class="sr-only sr-only-focusable">(current)</span></a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/registerPerson'">Register Person<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/registerInfected'"> Register Infected<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="'/analytics'">Analytics<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>
