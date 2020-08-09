@@ -1,5 +1,18 @@
 .form-group{
   width: 300px;
   margin-left: 30px;
-  //margin-right: 30px;
+}
+.dateInput{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 34px;
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+
+}
+.md-input-container label {
+  color: red;
 }

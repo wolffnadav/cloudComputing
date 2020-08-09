@@ -18,6 +18,13 @@ const dynamodb = new aws.DynamoDB({
     secretAccessKey: config.secretAccessKey
 });
 
+const s3 = new aws.S3({
+    signatureVersion: 'v4',
+    region: config.region,
+    accessKeyId: config.accessKeyId,
+    secretAccessKey: config.secretAccessKey
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -164,7 +171,7 @@ app.get('/api/getBusinessesNames', function (req, res) {
     }];
     let i = 0;
     exampleBody.forEach(it => {
-        it['id']= i;
+        it['id'] = i;
         i++;
     });
 
@@ -177,4 +184,32 @@ app.get('/api/getBusinessesNames', function (req, res) {
 
     });
 });
+
+//Get QR barcose image from s3 bucket
+app.get('/api/getQrImage', function (req, res) {
+    var params = {
+        Bucket: "final-project-cloud",
+    };
+    s3.listObjects(params, function (err, data) {
+        if (err) {
+            console.log(err, err.stack);
+        } else {
+            imagesUrlArray = [];
+            data.Contents.forEach(image => {
+                imagesUrlArray.push(s3.getSignedUrl('getObject', {
+                    Bucket: "final-project-cloud",
+                    Key: image.Key,
+                    Expires: 100
+                }));
+            });
+            res.send(
+                {
+                    "statusCode": "200",
+                    "images": imagesUrlArray
+                })
+        }
+    });
+});
+
+
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));

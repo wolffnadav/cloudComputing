@@ -14,6 +14,8 @@ export class RegisterPersonComponent implements OnInit {
   public userName: String;
   public userEmail: String;
   public businessEntered: String;
+  public isSubmit = false;
+  public qrImage = [];
   keyword = 'name';
   data = [];
 
@@ -62,6 +64,7 @@ export class RegisterPersonComponent implements OnInit {
       .subscribe(data => {
         console.log(data.statusCode);
         this.successAlert("You just managed to sign up :) ")
+        this.isSubmit = true;
       }, error => {
         console.error("insertNewPerson error: \n" + error.message);
         this.failAlert('Something went wrong!\nPlease try again..');
@@ -104,35 +107,33 @@ export class RegisterPersonComponent implements OnInit {
   }
 
   selectEvent(item) {
-    // do something with selected item
-    debugger;
     this.businessEntered = item.name;
   }
 
-  onChangeSearch(val: string) {
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
-  }
-
-  onFocused(e) {
-    // do something when input is focused
-  }
-
   ngOnInit() {
-    this.getdata(null);
+    this.isSubmit = false;
+    this.getdata();
+    this.getQrImage()
+
   }
 
-
-  private getdata(param) {
+  private getdata() {
     this.http.get<any>('/api/getBusinessesNames')
       .subscribe(res => {
-        console.log(res.statusCode);
-        console.log(res);
         this.data = res.body;
-        console.log(this.data);
-
+        this.getQrImage()
       }, error => {
-        console.error("insertNewPerson error: \n" + error.message);
+        console.error("getBusinessesNames error: \n" + error.message);
+      });
+  }
+
+  private getQrImage() {
+    this.http.get<any>('/api/getQrImage')
+      .subscribe(data => {
+        debugger;
+        this.qrImage = data.images;
+      }, error => {
+        console.error("getQrImage error: \n" + error.message);
       });
   }
 }

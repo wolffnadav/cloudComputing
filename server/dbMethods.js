@@ -71,7 +71,7 @@ module.exports = {
     },
 
     // get business ID, given Business Name we return Business ID
-    getBusinessID: async (businessName)=> {
+    getBusinessID: async (businessName) => {
         var param = {
             ExpressionAttributeNames: {
                 "#AT": "BusinessName",
@@ -85,8 +85,8 @@ module.exports = {
             TableName: "BusinessNameToID"
         };
 
-        return await dynamodb.getItem(param, function(err, data){
-            if(err) console.log(err);
+        return await dynamodb.getItem(param, function (err, data) {
+            if (err) console.log(err);
             else {
                 console.log("business ID is: " + data.Item.ID.S);
             }
