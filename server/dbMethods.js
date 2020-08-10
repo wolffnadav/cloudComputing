@@ -50,6 +50,19 @@ module.exports = {
     },
 
 
+    //update the Business table visitors list, this when a user enter a business the business table records this in it visitors list
+    updateBusinessVisitorsList: (param) => {
+        //enter the transaction to the users list
+        dynamodb.updateItem(param, function(err){
+            if(err) {
+                console.log("error in updateBusinessVisitors " + err);
+            } else {
+                console.log("user added to businesses visitors list")
+            }
+        })
+    },
+
+
     // update the users table, if a new user scans the barcode he will be entered to the Users table for the first time
     // otherwise the new barcode scan will be added to the Visited list
     updateCustomer: (param, param2) => {
@@ -70,16 +83,10 @@ module.exports = {
 
     // get business ID, given Business Name we return Business ID
     getBusinessID: async (businessName) => {
+
         let param = {
-            ExpressionAttributeNames: {
-                "#AT": "BusinessName",
-            },
-            ExpressionAttributeValues: {
-                ":a": {
-                    S: businessName
-                }
-            },
-            FilterExpression: "#AT = :a",
+            Key: businessName,
+            ProjectionExpression: 'ID',
             TableName: "BusinessNameToID"
         };
 
