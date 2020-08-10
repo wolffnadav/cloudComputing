@@ -1,5 +1,26 @@
-.form-group{
+.form-group {
   width: 300px;
   margin-left: 30px;
-  //margin-right: 30px;
+}
+
+.qrImg {
+  margin-left: 30px;
+}
+
+.form-control {
+  margin-bottom: 5px;
+}
+
+.dropdown {
+  height: 30px;
+  border-radius: 4px !important;
+  border: 1px solid #ccc;
+  box-shadow: none !important;
+  margin-bottom: 20px;
+  width: 300px;
+
+}
+
+.autocomplete-container {
+  box-shadow: 0 0 0 0
 }

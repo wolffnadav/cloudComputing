@@ -28,10 +28,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
-            "scripts": ["node_modules/sweetalert2/dist/sweetalert2.js"]
+            "scripts": [
+              "node_modules/sweetalert2/dist/sweetalert2.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,10 +97,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
-            "scripts": ["node_modules/sweetalert2/dist/sweetalert2.js"]
+            "scripts": [
+              "node_modules/sweetalert2/dist/sweetalert2.js"
+            ]
           }
         },
         "lint": {
@@ -126,6 +132,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "app"
 }

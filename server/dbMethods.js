@@ -35,7 +35,7 @@ module.exports = {
 
         //enter the businessID to the BusinessNameToID
         let param2 = {
-            ExpressionAttributeNames: { "#ID": "ID"},
+            ExpressionAttributeNames: {"#ID": "ID"},
             ExpressionAttributeValues: {":ID": {S: businessID},},
             Key: {"BusinessName": {S: businessName}},
             ReturnValues: "ALL_NEW",
@@ -60,6 +60,7 @@ module.exports = {
                 dynamodb.updateItem(param2, function (err2) {
                     if (err2) {
                         console.log("weird error in updateCustomer - look into this later");
+                        //Todo it first dose the inner function this is the error..
                     } else {
                         console.log("new user was added to DB");
                     }
@@ -69,27 +70,48 @@ module.exports = {
         });
     },
 
+    // get business ID, given Business Name we return Business ID
+    getBusinessID: async (businessName) => {
+        var param = {
+            ExpressionAttributeNames: {
+                "#AT": "BusinessName",
+            },
+            ExpressionAttributeValues: {
+                ":a": {
+                    S: businessName
+                }
+            },
+            FilterExpression: "#AT = :a",
+            TableName: "BusinessNameToID"
+        };
 
-    //get business ID, given Business Name we return Business ID
-    // getBusinessID: async (businessName)=> {
-    //     let param = {
-    //         TableName : "BusinessNameToID",
-    //         Key: { "BusinessName": {"S": businessName} },
-    //         ProjectionExpression: 'ID'
-    //     };
-    //
-    //     return await dynamodb.getItem(param, function(err, data){
-    //         if(err) console.log(err);
-    //         else {
-    //             console.log("business ID is: " + data.Item.ID.S);
-    //         }
-    //     }).promise();
-    // },
+        return await dynamodb.getItem(param, function (err, data) {
+            if (err) console.log(err);
+            else {
+                console.log("business ID is: " + data.Item.ID.S);
+            }
+        }).promise();
+    },
 
 
     //send a notification to all users how got infected that they are in risk and should be quarantine
     updateInfected: (param) => {
-            //TODO - this should be a lambada function on AWS
-        }
+        //TODO - this should be a lambada function on AWS
+    },
+
+    // Get all BusinessName for drop down list
+    getBusinesses: () => {
+        var params = {TableName: "BusinessNameToID"};
+
+        dynamodb.scan(params).eachPage((err, data, done) => {
+            if (err) {
+                console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+            } else {
+                return data.items;
+            }
+        });
+    },
+
+
 }
 ;

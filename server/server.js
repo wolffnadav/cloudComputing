@@ -6,12 +6,19 @@ const port = 3000;
 //other configurations
 const bodyParser = require('body-parser');
 const db = require('./dbMethods');
-const { v4 : uuidV4 } = require('uuid');
+const {v4: uuidV4} = require('uuid');
 
 //aws configuration
 const config = require('./config/config');
 aws = require('aws-sdk');
 const dynamodb = new aws.DynamoDB({
+    signatureVersion: 'v4',
+    region: config.region,
+    accessKeyId: config.accessKeyId,
+    secretAccessKey: config.secretAccessKey
+});
+
+const s3 = new aws.S3({
     signatureVersion: 'v4',
     region: config.region,
     accessKeyId: config.accessKeyId,
@@ -63,15 +70,15 @@ app.post('/api/insertNewBusiness', function (req, res) {
 //TODO currently if business entered is not in Business table this throws an error
 app.post('/api/insertNewPerson', function (req, res) {
     //query Business table to find the Business ID
-    function getBusinessIDAndUpdateCustomers(businessName, userName, email, phoneNumber){
+    function getBusinessIDAndUpdateCustomers(businessName, userName, email, phoneNumber) {
         //get business ID
         let param = {
-            TableName : "BusinessNameToID",
-            Key: { "BusinessName": {"S": businessName} },
+            TableName: "BusinessNameToID",
+            Key: {"BusinessName": {"S": businessName}},
             ProjectionExpression: 'ID'
         };
-        dynamodb.getItem(param, function(err, data){
-            if(err) {
+        dynamodb.getItem(param, function (err, data) {
+            if (err) {
                 console.log(err);
             }
             else {
@@ -82,7 +89,7 @@ app.post('/api/insertNewPerson', function (req, res) {
     }
 
     //update the customer table with the businessID
-    function updateCustomer(businessID, userName, email, phoneNumber){
+    function updateCustomer(businessID, userName, email, phoneNumber) {
         let timeStamp = new Date().toString();
 
         let updateVisitedListParam = {
@@ -92,10 +99,11 @@ app.post('/api/insertNewPerson', function (req, res) {
                 "#V": "Visited"
             },
             ExpressionAttributeValues: {
-                ":V": { L: [{ SS: [businessID, timeStamp ] } ] },
-                ":N": { S: userName},
-                ":E": { S: email } },
-            Key: { "PhoneNumber": { S: phoneNumber } },
+                ":V": {L: [{SS: [businessID, timeStamp]}]},
+                ":N": {S: userName},
+                ":E": {S: email}
+            },
+            Key: {"PhoneNumber": {S: phoneNumber}},
             TableName: "Users",
             UpdateExpression: "SET #V = list_append(#V, :V), #N = :N, #E = :E"
         };
@@ -107,10 +115,11 @@ app.post('/api/insertNewPerson', function (req, res) {
                 "#V": "Visited"
             },
             ExpressionAttributeValues: {
-                ":V": { L: [{ SS: [businessID, timeStamp ] } ] },
-                ":N": { S: userName},
-                ":E": { S: email } },
-            Key: { "PhoneNumber": { S: phoneNumber } },
+                ":V": {L: [{SS: [businessID, timeStamp]}]},
+                ":N": {S: userName},
+                ":E": {S: email}
+            },
+            Key: {"PhoneNumber": {S: phoneNumber}},
             TableName: "Users",
             UpdateExpression: "SET #V = :V, #N = :N, #E = :E"
         };
@@ -139,5 +148,68 @@ app.post('/api/sendInfectedAlert', function (req, res) {
     //TODO
 
 });
+
+//Get all Businesses Names for drop down list
+app.get('/api/getBusinessesNames', function (req, res) {
+    //todo make it work asynchron and change exampleBody with businesses
+    let businesses = db.getBusinesses();
+    let exampleBody = [{
+        "name": "pizza hut",
+        "id_table": "f47117d0-7f62-4b90-9e5d-222003938bab"
+    }, {
+        "name": "in and out burgers",
+        "id_table": "f7bc8bc7-0000-4b09-a607-b416672e8a0f"
+    }, {
+        "name": "in and out",
+        "id_table": "3eab512e-c484-4fb7-905b-ce6694268a02"
+    }, {
+        "name": "dddd",
+        "id_table": "f8894bea-61d9-4b9d-9b4e-d8c7989ce411"
+    }, {
+        "name": "burger place",
+        "id_table": "ed868522-15d8-453e-854f-4787e8b97988"
+    }];
+    let i = 0;
+    exampleBody.forEach(it => {
+        it['id'] = i;
+        i++;
+    });
+
+
+    res.send({
+        "statusCode": "200",
+        "body": exampleBody
+        // "body": businesses
+
+
+    });
+});
+
+//Get QR barcose image from s3 bucket
+app.get('/api/getQrImage', function (req, res) {
+    var params = {
+        Bucket: "final-project-cloud",
+    };
+    s3.listObjects(params, function (err, data) {
+        if (err) {
+            console.log(err, err.stack);
+        } else {
+            imagesUrlArray = [];
+            data.Contents.forEach(image => {
+                imagesUrlArray.push(s3.getSignedUrl('getObject', {
+                    Bucket: "final-project-cloud",
+                    Key: image.Key,
+                    Expires: 100
+                }));
+            });
+            res.send(
+                {
+                    "statusCode": "200",
+                    "images": imagesUrlArray
+                })
+        }
+    });
+});
+
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));

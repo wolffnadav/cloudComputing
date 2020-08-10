@@ -33,7 +33,7 @@ export class RegisterBusinessComponent {
     this.http.post<any>('/api/insertNewBusiness', {businessname: this.businessName, address: this.businessAddress})
       .subscribe(data => {
         console.log(data.statusCode);
-        this.successAlert("You just managed to sign up your business :) ")
+        this.successAlert("You sign up your business :) ")
 
       }, error => {
         console.error("insertNewBusiness error: " + error.message);
