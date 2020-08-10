@@ -1,5 +1,21 @@
 .form-group{
-  width: 300px;
+  width: 800px;
   margin-left: 30px;
   //margin-right: 30px;
+}
+
+li{
+  min-width: 100%;
+  width: auto;
+  display: inline-block;
+}
+
+ul {
+  min-width: 100%;
+  padding: 0;
+}
+
+input{
+  width: 350px;
+  margin: 0;
 }

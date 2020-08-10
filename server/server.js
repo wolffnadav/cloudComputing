@@ -67,7 +67,6 @@ app.post('/api/insertNewBusiness', function (req, res) {
 
 
 //person uses our service, this will enter the person to the DB if that is his first use or add a new entry to his Visited list
-//TODO currently if business entered is not in Business table this throws an error
 app.post('/api/insertNewPerson', function (req, res) {
     //query Business table to find the Business ID
     function getBusinessIDAndUpdateCustomers(businessName, userName, email, phoneNumber) {
@@ -149,45 +148,53 @@ app.post('/api/sendInfectedAlert', function (req, res) {
 
 });
 
-//Get all Businesses Names for drop down list
+
+//Get all Businesses Names for the drop down list in the register-person page
 app.get('/api/getBusinessesNames', function (req, res) {
-    //todo make it work asynchron and change exampleBody with businesses
-    let businesses = db.getBusinesses();
-    let exampleBody = [{
-        "name": "pizza hut",
-        "id_table": "f47117d0-7f62-4b90-9e5d-222003938bab"
-    }, {
-        "name": "in and out burgers",
-        "id_table": "f7bc8bc7-0000-4b09-a607-b416672e8a0f"
-    }, {
-        "name": "in and out",
-        "id_table": "3eab512e-c484-4fb7-905b-ce6694268a02"
-    }, {
-        "name": "dddd",
-        "id_table": "f8894bea-61d9-4b9d-9b4e-d8c7989ce411"
-    }, {
-        "name": "burger place",
-        "id_table": "ed868522-15d8-453e-854f-4787e8b97988"
-    }];
-    let i = 0;
-    exampleBody.forEach(it => {
-        it['id'] = i;
-        i++;
+    //step 1 - get Business name and ID by a promise
+    const getBusinessData = new Promise((resolve, reject) => {
+        dynamodb.scan({TableName: "BusinessNameToID"}).eachPage((err, data) => {
+            if (err) {
+                reject(console.error("Unable to query. Error:", JSON.stringify(err, null, 2)));
+            } else {
+                if (data != null) resolve(data.Items);
+            }
+        })
     });
 
+    //step 2 - with these values create a param
+    getBusinessData.then(resolve => {
+        let bodyParam = [];
+        resolve.forEach(element => {
+            bodyParam.push({
+                "name": element.BusinessName.S,
+                "id_table": element.ID.S
+            })
+        })
+        return bodyParam;
+        //step 3 - send these parameters to front end
+    }).then(resolve => {
+        let i = 0;
+        resolve.forEach(it => {
+            it['id'] = i;
+            i++;
+        });
 
-    res.send({
-        "statusCode": "200",
-        "body": exampleBody
-        // "body": businesses
-
-
+        res.send({
+            "statusCode": "200",
+            "body": resolve
+        })
+    }).catch(reject => {
+        console.log("error in getBusinessesNames")
+        console.log(reject);
     });
 });
 
-//Get QR barcose image from s3 bucket
+
+//Get QR barcode image from s3 bucket
+//TODO - why do we need this?
 app.get('/api/getQrImage', function (req, res) {
-    var params = {
+    let params = {
         Bucket: "final-project-cloud",
     };
     s3.listObjects(params, function (err, data) {

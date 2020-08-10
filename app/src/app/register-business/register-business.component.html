@@ -1,9 +1,11 @@
 
 <! -- business register component -->
-<div class="form-group">
-  <H4 >Insert Business</H4>
-  <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname" placeholder="NAME" required name="name">
-  <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address" placeholder="ADDRESS" required name="name">
+<div class="form-group" id="first-div">
+  <H4><u>Insert Business:</u></H4>
+  <ul style="list-style: none;">
+    <li>Name of business: <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname" placeholder="NAME" required name="name"></li>
+    <li>Address of business: <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address" placeholder="ADDRESS" required name="name"></li>
+  </ul>
   <br>
   <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
 </div>

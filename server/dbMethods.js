@@ -47,8 +47,6 @@ module.exports = {
             if (err) console.log(err);
             else console.log("inserted new ID to BusinessNameToID Table");       // successful response
         });
-
-
     },
 
 
@@ -72,7 +70,7 @@ module.exports = {
 
     // get business ID, given Business Name we return Business ID
     getBusinessID: async (businessName) => {
-        var param = {
+        let param = {
             ExpressionAttributeNames: {
                 "#AT": "BusinessName",
             },
@@ -101,17 +99,16 @@ module.exports = {
 
     // Get all BusinessName for drop down list
     getBusinesses: () => {
-        var params = {TableName: "BusinessNameToID"};
+        let params = {TableName: "BusinessNameToID"};
 
-        dynamodb.scan(params).eachPage((err, data, done) => {
+        dynamodb.scan(params).eachPage((err, data) => {
             if (err) {
                 console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             } else {
-                return data.items;
+                return data.Items;
             }
         });
     },
 
 
-}
-;
+};
