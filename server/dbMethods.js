@@ -47,8 +47,19 @@ module.exports = {
             if (err) console.log(err);
             else console.log("inserted new ID to BusinessNameToID Table");       // successful response
         });
+    },
 
 
+    //update the Business table visitors list, this when a user enter a business the business table records this in it visitors list
+    updateBusinessVisitorsList: (param) => {
+        //enter the transaction to the users list
+        dynamodb.updateItem(param, function(err){
+            if(err) {
+                console.log("error in updateBusinessVisitors " + err);
+            } else {
+                console.log("user added to businesses visitors list")
+            }
+        })
     },
 
 
@@ -72,16 +83,10 @@ module.exports = {
 
     // get business ID, given Business Name we return Business ID
     getBusinessID: async (businessName) => {
-        var param = {
-            ExpressionAttributeNames: {
-                "#AT": "BusinessName",
-            },
-            ExpressionAttributeValues: {
-                ":a": {
-                    S: businessName
-                }
-            },
-            FilterExpression: "#AT = :a",
+
+        let param = {
+            Key: businessName,
+            ProjectionExpression: 'ID',
             TableName: "BusinessNameToID"
         };
 
@@ -101,17 +106,16 @@ module.exports = {
 
     // Get all BusinessName for drop down list
     getBusinesses: () => {
-        var params = {TableName: "BusinessNameToID"};
+        let params = {TableName: "BusinessNameToID"};
 
-        dynamodb.scan(params).eachPage((err, data, done) => {
+        dynamodb.scan(params).eachPage((err, data) => {
             if (err) {
                 console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             } else {
-                return data.items;
+                return data.Items;
             }
         });
     },
 
 
-}
-;
+};

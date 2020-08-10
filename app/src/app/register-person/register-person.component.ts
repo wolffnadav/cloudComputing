@@ -112,16 +112,16 @@ export class RegisterPersonComponent implements OnInit {
 
   ngOnInit() {
     this.isSubmit = false;
-    this.getdata();
+    this.getData();
     this.getQrImage()
 
   }
 
-  private getdata() {
+  private getData() {
     this.http.get<any>('/api/getBusinessesNames')
       .subscribe(res => {
         this.data = res.body;
-        this.getQrImage()
+        this.getQrImage();
       }, error => {
         console.error("getBusinessesNames error: \n" + error.message);
       });
