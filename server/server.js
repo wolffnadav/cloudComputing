@@ -191,27 +191,22 @@ app.get('/api/getBusinessesNames', function (req, res) {
         })
     });
 
-    //step 2 - with these values create a param
+    //step 2 - with these values create a param and send back to front end
     getBusinessData.then(resolve => {
         let bodyParam = [];
+        let i = 0;
         resolve.forEach(element => {
             bodyParam.push({
                 "name": element.BusinessName.S,
-                "id_table": element.ID.S
+                "id_table": element.ID.S,
+                "id": i
             })
-        })
-        return bodyParam;
-        //step 3 - send these parameters to front end
-    }).then(resolve => {
-        let i = 0;
-        resolve.forEach(it => {
-            it['id'] = i;
             i++;
-        });
 
-        res.send({
-            "statusCode": "200",
-            "body": resolve
+            res.send({
+                "statusCode": "200",
+                "body": bodyParam
+            })
         })
     }).catch(reject => {
         console.log("error in getBusinessesNames")
