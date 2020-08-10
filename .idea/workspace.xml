@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="">
+    <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="Choose businesses names from dropdown list.&#10;Get all businesses names from businessesNamesToId table ans send the list to front end">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/home/home.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/app/node_modules/" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,12 +18,49 @@
     <session id="-777194002">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1" />
+          <entry key="html" value="282" />
+          <entry key="js" value="686" />
+          <entry key="scss" value="216" />
+          <entry key="ts" value="362" />
+          <entry key="txt" value="248" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="282" />
+          <entry key="JavaScript" value="686" />
+          <entry key="PLAIN_TEXT" value="248" />
+          <entry key="SCSS" value="216" />
+          <entry key="TypeScript" value="362" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="603" value="1" />
+          <entry key="html" value="15" />
+          <entry key="js" value="8" />
+          <entry key="scss" value="14" />
+          <entry key="ts" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="15" />
+          <entry key="JavaScript" value="9" />
+          <entry key="SCSS" value="14" />
+          <entry key="TypeScript" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -33,62 +68,38 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts">
+        <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="345">
+              <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/app.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/app.component.scss">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/app/app.module.ts">
+        <entry file="file://$PROJECT_DIR$/server/sendInfectedMessages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="578">
+              <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>businessEntered</find>
+      <find>id</find>
+      <find>data</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,7 +107,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/app/package.json" />
+        <option value="$PROJECT_DIR$/app/src/app/home/home.component.scss" />
+        <option value="$PROJECT_DIR$/app/src/app/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" />
+        <option value="$PROJECT_DIR$/app/src/index.html" />
+        <option value="$PROJECT_DIR$/app/src/app/app.component.scss" />
+        <option value="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts" />
+        <option value="$PROJECT_DIR$/app/src/styles.scss" />
         <option value="$PROJECT_DIR$/app/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html" />
+        <option value="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss" />
+        <option value="$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss" />
+        <option value="$PROJECT_DIR$/server/dbMethods.js" />
+        <option value="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" />
+        <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" />
+        <option value="$PROJECT_DIR$/app/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/app/src/app/home/home.component.html" />
+        <option value="$PROJECT_DIR$/server/sensSms.js" />
+        <option value="$PROJECT_DIR$/server/sendInfectedMessages.js" />
       </list>
     </option>
   </component>
@@ -108,6 +138,131 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/app/node_modules" />
+    <handled-path value="$PROJECT_DIR$/server/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/app/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/accepts/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/append-field/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/array-flatten/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/aws-sdk/node_modules/uuid/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/aws-sdk/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/base64-js/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/http-errors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/body-parser/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/buffer-from/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/buffer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/busboy/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/bytes/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/concat-stream/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/concat-stream/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/concat-stream/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/concat-stream/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/connect-multiparty/node_modules/http-errors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/connect-multiparty/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/connect-multiparty/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/connect-multiparty/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/content-disposition/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/content-type/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/cookie-parser/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/cookie-signature/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/cookie/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/core-util-is/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/depd/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/destroy/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/dicer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/ee-first/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/encodeurl/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/escape-html/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/etag/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/events/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/body-parser/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/bytes/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/raw-body/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/setprototypeof/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/node_modules/statuses/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/express/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/statuses/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/finalhandler/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/forwarded/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/fresh/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/fs/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/http-errors/node_modules/setprototypeof/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/http-errors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/iconv-lite/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/ieee754/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/ipaddr.js/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/jmespath/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/media-typer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/merge-descriptors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/methods/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/mime/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/minimist/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/mkdirp/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/multer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/multiparty/node_modules/http-errors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/multiparty/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/multiparty/node_modules/setprototypeof/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/multiparty/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/negotiator/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/object-assign/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/on-finished/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/parseurl/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/path-to-regexp/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/path/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/process-nextick-args/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/process/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/proxy-addr/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/punycode/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/qs/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/querystring/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/random-bytes/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/range-parser/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/raw-body/node_modules/http-errors/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/raw-body/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/readable-stream/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/readable-stream/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/safe-buffer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/safer-buffer/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/sax/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/send/node_modules/statuses/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/send/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/serve-static/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/setprototypeof/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/statuses/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/streamsearch/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/string_decoder/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/toidentifier/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/type-is/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/typedarray/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/uid-safe/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/unpipe/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/url/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/util-deprecate/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/util/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/utils-merge/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/uuid/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/vary/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/xml2js/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/xmlbuilder/package.json" />
+      <path value="$PROJECT_DIR$/server/node_modules/xtend/package.json" />
+      <path value="$PROJECT_DIR$/server/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectId" id="1fe3zoaWdIFdNsxTyNOuWjzYeNU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -148,26 +303,19 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="register-infected" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloudComputing" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="register-business" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloudComputing" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cloudComputing" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,10 +335,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="ts.external.directory.path" value="C:\Users\GuyPc\Downloads\Cloud Computing\sandBox\NadavAngularWebsite\cloudComputing\app\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/app/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/assets/images" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$" />
@@ -238,6 +387,7 @@
       <workItem from="1596875124651" duration="11555000" />
       <workItem from="1596900932906" duration="1480000" />
       <workItem from="1596919079894" duration="3192000" />
+      <workItem from="1596977615174" duration="5875000" />
     </task>
     <task id="LOCAL-00001" summary="first app">
       <created>1596524098078</created>
@@ -330,30 +480,88 @@
       <option name="project" value="LOCAL" />
       <updated>1596919108214</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/src/app/app.component.html&#10;#&#9;app/src/app/app.module.ts&#10;#&#9;app/src/app/home/home.component.scss">
+      <created>1596955970238</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596955970238</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Navbar Fixed">
+      <created>1596960327805</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596960327805</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added choose infected time as date">
+      <created>1596962493577</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1596962493577</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Choose businesses names from dropdown list.&#10;Get all businesses names from businessesNamesToId table ans send the list to front end">
+      <created>1596970448183</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1596970448183</updated>
+    </task>
+    <task id="LOCAL-00018" summary="After person register get the QR code">
+      <created>1596982091287</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1596982091287</updated>
+    </task>
+    <task id="LOCAL-00019" summary="qr code fix">
+      <created>1596982423679</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1596982423679</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Send sms?">
+      <created>1597078720824</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1597078720824</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157000" />
+    <option name="totallyTimeSpent" value="19350000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21000704" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17962629" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.3283767" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3667906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.276907" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31226766" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32961586" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.28624535" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.28624535" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" weight="0.3482032" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" weight="0.30359355" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010571" side_tool="true" weight="0.3482032" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -361,7 +569,12 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/server/node_modules/aws-sdk/scripts/services-table-generator.js" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -376,96 +589,203 @@
     <MESSAGE value="getBusinessID works" />
     <MESSAGE value="text box protection and bug fixes" />
     <MESSAGE value="insertCustomer function workds" />
-    <option name="LAST_COMMIT_MESSAGE" value="insertCustomer function workds" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/src/app/app.component.html&#10;#&#9;app/src/app/app.module.ts&#10;#&#9;app/src/app/home/home.component.scss" />
+    <MESSAGE value="Navbar Fixed" />
+    <MESSAGE value="Added choose infected time as date" />
+    <MESSAGE value="Choose businesses names from dropdown list.&#10;Get all businesses names from businessesNamesToId table ans send the list to front end" />
+    <MESSAGE value="After person register get the QR code" />
+    <MESSAGE value="qr code fix" />
+    <MESSAGE value="Send sms?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send sms?" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="606" y="267" key="#File_Watchers" timestamp="1596919303874">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="606" y="267" key="#File_Watchers/0.0.1536.864@0.0.1536.864" timestamp="1596919303874" />
-    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596710633636">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596710633636" />
-    <state x="393" y="10" key="CommitChangelistDialog2" timestamp="1596919106641">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="393" y="10" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596919106641" />
-    <state x="437" y="211" key="EditFileWatcherDialog" timestamp="1596810281840">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="437" y="211" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1596810281840" />
-    <state width="1515" height="256" key="GridCell.Tab.0.bottom" timestamp="1596919525674">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="256" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596919525674" />
-    <state width="1515" height="256" key="GridCell.Tab.0.center" timestamp="1596919525673">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="256" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596919525673" />
-    <state width="1515" height="256" key="GridCell.Tab.0.left" timestamp="1596919525673">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="256" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596919525673" />
-    <state width="1515" height="256" key="GridCell.Tab.0.right" timestamp="1596919525673">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="256" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596919525673" />
-    <state width="1515" height="246" key="GridCell.Tab.1.bottom" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.1.center" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.1.left" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.1.right" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.2.bottom" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state width="1515" height="246" key="GridCell.Tab.2.center" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.2.left" timestamp="1596886690746">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1596886690746" />
-    <state width="1515" height="246" key="GridCell.Tab.2.right" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state width="1515" height="246" key="GridCell.Tab.3.bottom" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state width="1515" height="246" key="GridCell.Tab.3.center" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.center/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state width="1515" height="246" key="GridCell.Tab.3.left" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.left/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state width="1515" height="246" key="GridCell.Tab.3.right" timestamp="1596886690747">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.right/0.0.1536.864@0.0.1536.864" timestamp="1596886690747" />
-    <state x="280" y="50" key="SettingsEditor" timestamp="1596901121760">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="280" y="50" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596901121760" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1596919121573">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596919121573" />
+    <state x="606" y="267" key="#File_Watchers" />
+    <state x="606" y="267" key="#File_Watchers/0.0.1536.864@0.0.1536.864" />
+    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
+    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" />
+    <state x="393" y="10" key="CommitChangelistDialog2" />
+    <state x="393" y="10" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" />
+    <state x="437" y="211" key="EditFileWatcherDialog" />
+    <state x="437" y="211" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="256" key="GridCell.Tab.0.bottom" />
+    <state width="1515" height="256" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="256" key="GridCell.Tab.0.center" />
+    <state width="1515" height="256" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="256" key="GridCell.Tab.0.left" />
+    <state width="1515" height="256" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="256" key="GridCell.Tab.0.right" />
+    <state width="1515" height="256" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.1.bottom" />
+    <state width="1515" height="246" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.1.center" />
+    <state width="1515" height="246" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.1.left" />
+    <state width="1515" height="246" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.1.right" />
+    <state width="1515" height="246" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.2.bottom" />
+    <state width="1515" height="246" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.2.center" />
+    <state width="1515" height="246" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.2.left" />
+    <state width="1515" height="246" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.2.right" />
+    <state width="1515" height="246" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.3.bottom" />
+    <state width="1515" height="246" key="GridCell.Tab.3.bottom/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.3.center" />
+    <state width="1515" height="246" key="GridCell.Tab.3.center/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.3.left" />
+    <state width="1515" height="246" key="GridCell.Tab.3.left/0.0.1536.864@0.0.1536.864" />
+    <state width="1515" height="246" key="GridCell.Tab.3.right" />
+    <state width="1515" height="246" key="GridCell.Tab.3.right/0.0.1536.864@0.0.1536.864" />
+    <state x="280" y="50" key="SettingsEditor" />
+    <state x="280" y="50" key="SettingsEditor/0.0.1536.864@0.0.1536.864" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="204" selection-start-line="14" selection-start-column="204" selection-end-line="14" selection-end-column="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="40" column="47" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/styles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/dbMethods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="11" selection-start-line="17" selection-start-column="6" selection-end-line="19" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/app.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="195" column="16" selection-start-line="195" selection-start-column="16" selection-end-line="195" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/sendInfectedMessages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
