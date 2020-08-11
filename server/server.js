@@ -125,7 +125,7 @@ app.post('/api/insertNewPerson', function (req, res) {
                 "#V": "Visited"
             },
             ExpressionAttributeValues: {
-                ":V": {L: [{SS: [businessID, timeStamp]}]},
+                ":V": {L: [{SS: [timeStamp, businessID]}]},
                 ":N": {S: userName},
                 ":E": {S: email}
             },
@@ -141,7 +141,7 @@ app.post('/api/insertNewPerson', function (req, res) {
                 "#V": "Visited"
             },
             ExpressionAttributeValues: {
-                ":V": {L: [{SS: [businessID, timeStamp]}]},
+                ":V": {L: [{SS: [timeStamp, businessID]}]},
                 ":N": {S: userName},
                 ":E": {S: email}
             },
@@ -171,25 +171,73 @@ app.post('/api/insertNewPerson', function (req, res) {
 app.post('/api/sendInfectedAlert', function (req, res) {
     //convert milliseconds to date
     let date = new Date(parseInt(req.body.dateOfNotice)).toString();
-
-    console.log(date);
-    console.log(req.body.phoneNumber);
-
+    let phoneNumber = req.body.phoneNumber;
 
     //entered the notice to the infected table
     let updateInfectedTable = {
         ExpressionAttributeNames: { "#D": "Date"},
         ExpressionAttributeValues: { ":D": {S: date} },
-        Key: {"PhoneNumber": {S: req.body.phoneNumber}},
+        Key: {"PhoneNumber": {S: phoneNumber}},
         TableName: "Infected",
         UpdateExpression: "SET #D = :D"
     };
 
     db.updateInfected(updateInfectedTable);
 
-
     //find in which restaurants our user was during his infectious time
     //TODO
+    let getBusinessParam = {
+        TableName: "Users",
+        Key: {"PhoneNumber": {"S": phoneNumber}},
+        ProjectionExpression: 'Visited'
+    }
+
+    let getBusiness = new Promise((resolve, reject) => {
+        dynamodb.getItem(getBusinessParam, function(err, data){
+            if(err){
+                reject(console.log("error in getting infected businesses"));
+            } else {
+                resolve(data.Item.Visited.L);
+            }
+        });
+    });
+
+    getBusiness.then(resolve => {
+        let warningList = [];
+        //now resolve is an array of all of the users data
+        resolve.forEach(async (element) => {
+            //find out businessID and timeStamp
+            let businessID = element.SS[0];
+            let timeStamp = element.SS[1];
+            if(element.SS[0][element.SS[0].length-1] === ')'){
+                businessID = element.SS[1];
+                timeStamp = element.SS[0];
+            }
+
+            let miliTime = Date.parse(timeStamp);
+            //get phone number that need to be warned
+            const batchOfPhones = await getPhoneNumbersToWarn(businessID, miliTime);
+            warningList.concat(batchOfPhones);
+        });
+        return warningList;
+    }).then(resolve => {
+        console.log(resolve);
+        //remove duplicates from resolve list
+        let uniqueSet = new Set(resolve);
+        console.log(uniqueSet);
+        //remove the infected person from the set
+        uniqueSet.delete(phoneNumber)
+
+        uniqueSet.forEach(element => {
+            console.log(element);
+        })
+        //send SMS to all the phones in resolve list
+
+
+    }).catch(reject => {
+        console.log(reject);
+    })
+
 
     //send a text message to all users that were in the same places our infectious user was
     //TODO
@@ -225,11 +273,13 @@ app.get('/api/getBusinessesNames', function (req, res) {
                 "id": i
             })
             i++;
-
-            res.send({
-                "statusCode": "200",
-                "body": bodyParam
-            })
+        })
+        return bodyParam;
+    //step 3 - send back the data to the front end
+    }).then(resolve => {
+        res.send({
+            "statusCode": "200",
+            "body": resolve
         })
     }).catch(reject => {
         console.log("error in getBusinessesNames")
@@ -266,3 +316,71 @@ app.get('/api/getQrImage', function (req, res) {
 
 
 app.listen(port, () => console.log(`app listening at http://localhost:${port}`));
+
+
+//this function gets BusinessID and timeStamp and returns the warning phone numbers from this specific business
+function getPhoneNumbersToWarn(businessID, timeStamp){
+    //editable parameters
+    //how long the customer is in the business
+    let avgDuration = 30;
+    let infectedEntranceTime = timeStamp;
+    let infectedExitTime = timeStamp + (avgDuration * 1000 * 60)
+
+    //query the DB for all the visitors in this business
+    let getBusinessVisitorsParam = {
+        TableName: "Businesses",
+        Key: {"ID": {"S": businessID}},
+        ProjectionExpression: 'VisitorsList'
+    }
+
+    let getBusinessVisitors = new Promise((resolve, reject) => {
+        dynamodb.getItem(getBusinessVisitorsParam, function(err, data){
+            if(err){
+                reject("error in getPhoneNumbersToWarn " + err);
+            } else {
+                resolve(data.Item.VisitorsList.L);
+            }
+        });
+    });
+
+    getBusinessVisitors.then(resolve => {
+        let warningPhoneNumbers = [];
+        //remember first item is a dummy
+        let flag = true;
+        resolve.forEach(element => {
+            if(flag){
+                //dummy skip this
+                flag = false;
+            } else {
+                let userPhoneNumber = element.SS[0];
+                let userEntrance = element.SS[1];
+                if(userEntrance[userEntrance.length - 1] !== ')'){
+                    userPhoneNumber = element.SS[1];
+                    userEntrance = element.SS[0];
+                }
+
+                let userMilliTimeEntrance = Date.parse(userEntrance);
+
+                // console.log("infectedEntranceTime")
+                // console.log(infectedEntranceTime)
+                //
+                // console.log("infectedExitTime")
+                // console.log(infectedExitTime)
+                //
+                // console.log("userMilliTimeEntrance")
+                // console.log(userMilliTimeEntrance)
+
+                //if the user was at the business when the infected person was add his phone number to warning list
+                if(infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance){
+                    warningPhoneNumbers.push(userPhoneNumber);
+                }
+            }
+        })
+
+        return warningPhoneNumbers;
+
+    }).catch(reject => {
+        console.log("error in getPhoneNumbersToWarn promise " + reject)
+        return null;
+    })
+}
