@@ -25,6 +25,9 @@ const s3 = new aws.S3({
     secretAccessKey: config.secretAccessKey
 });
 
+//editable parameter - the average time user stays in a business
+let avgDuration = 30;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -214,12 +217,19 @@ app.post('/api/sendInfectedAlert', function (req, res) {
                 timeStamp = element.SS[0];
             }
 
+            //convert timeStamp to miliTime
             let miliTime = Date.parse(timeStamp);
             //get phone number that need to be warned
-            const batchOfPhones = await getPhoneNumbersToWarn(businessID, miliTime);
-            warningList.concat(batchOfPhones);
+
+            // get the need data from DB by a promise
+            //TODO - make this synchronize
+            const getBusinessVisitors = getPhoneNumbersToWarn(businessID, miliTime);
+            warningList.concat(getBusinessVisitors);
+
         });
+
         return warningList;
+
     }).then(resolve => {
         console.log(resolve);
         //remove duplicates from resolve list
@@ -320,9 +330,6 @@ app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
 
 //this function gets BusinessID and timeStamp and returns the warning phone numbers from this specific business
 function getPhoneNumbersToWarn(businessID, timeStamp){
-    //editable parameters
-    //how long the customer is in the business
-    let avgDuration = 30;
     let infectedEntranceTime = timeStamp;
     let infectedExitTime = timeStamp + (avgDuration * 1000 * 60)
 
@@ -360,15 +367,6 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
                 }
 
                 let userMilliTimeEntrance = Date.parse(userEntrance);
-
-                // console.log("infectedEntranceTime")
-                // console.log(infectedEntranceTime)
-                //
-                // console.log("infectedExitTime")
-                // console.log(infectedExitTime)
-                //
-                // console.log("userMilliTimeEntrance")
-                // console.log(userMilliTimeEntrance)
 
                 //if the user was at the business when the infected person was add his phone number to warning list
                 if(infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance){
