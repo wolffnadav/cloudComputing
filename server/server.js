@@ -206,28 +206,67 @@ app.post('/api/sendInfectedAlert', function (req, res) {
     });
 
     getBusiness.then(resolve => {
+        //init list of all the people who should be warned
         let warningList = [];
-        //now resolve is an array of all of the users data
+
+        //now resolve is an array of all of the users data got from the query above
         resolve.forEach(async (element) => {
-            //find out businessID and timeStamp
-            let businessID = element.SS[0];
-            let timeStamp = element.SS[1];
-            if(element.SS[0][element.SS[0].length-1] === ')'){
-                businessID = element.SS[1];
-                timeStamp = element.SS[0];
+            try {
+                //find out businessID and timeStamp
+                let businessID = element.SS[0];
+                let timeStamp = element.SS[1];
+                if (element.SS[0][element.SS[0].length - 1] === ')') {
+                    businessID = element.SS[1];
+                    timeStamp = element.SS[0];
+                }
+
+                //convert timeStamp to milliTime and calculate exit time - make use of global variable avgDuration
+                let infectedEntranceTime = Date.parse(timeStamp);
+                let infectedExitTime = infectedEntranceTime + (avgDuration * 1000 * 60);
+
+                // --  get phone number that need to be warned  --  //
+
+                // query the Business table for all the visitors that came to this business - this code is synchronized
+                let getBusinessVisitors = await queryBusinessTableForVisitors(businessID);
+
+                let flag = true;                    //flag to skip the dummy first entry in business Visited list
+                getBusinessVisitors.forEach(element => {
+                    if (flag) {
+                        //dummy skip this
+                        flag = false;
+                    } else {
+                        //else get the users phone number and time of entrance
+                        let userPhoneNumber = element.SS[0];
+                        let userEntrance = element.SS[1];
+                        if (userEntrance[userEntrance.length - 1] !== ')') {
+                            userPhoneNumber = element.SS[1];
+                            userEntrance = element.SS[0];
+                        }
+
+                        console.log("userPhoneNumber");
+                        console.log(userPhoneNumber);
+                        console.log("userEntrance");
+                        console.log(userEntrance);
+
+                        //convert time of entrance to milliseconds
+                        let userMilliTimeEntrance = Date.parse(userEntrance);
+
+                        //if the user was at the business when the infected person was add his phone number to warning list
+                        if (infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance) {
+                            warningList.push(userPhoneNumber);
+                        }
+                    }
+
+                });
+
+            } catch (err){
+                console.log("error caught in catch after await" + err);
             }
-
-            //convert timeStamp to miliTime
-            let miliTime = Date.parse(timeStamp);
-            //get phone number that need to be warned
-
-            // get the need data from DB by a promise
-            //TODO - make this synchronize
-            const getBusinessVisitors = getPhoneNumbersToWarn(businessID, miliTime);
-            warningList.concat(getBusinessVisitors);
 
         });
 
+        console.log("warning List before removing duplicates");
+        console.log(warningList);
         return warningList;
 
     }).then(resolve => {
@@ -381,4 +420,23 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
         console.log("error in getPhoneNumbersToWarn promise " + reject)
         return null;
     })
+}
+
+function queryBusinessTableForVisitors(businessID){
+    //query the DB for all the visitors in this business
+    let getBusinessVisitorsParam = {
+        TableName: "Businesses",
+        Key: {"ID": {"S": businessID}},
+        ProjectionExpression: 'VisitorsList'
+    }
+
+    return new Promise((resolve, reject) => {
+        dynamodb.getItem(getBusinessVisitorsParam, function(err, data){
+            if(err){
+                reject("error in getPhoneNumbersToWarn " + err);
+            } else {
+                resolve(data.Item.VisitorsList.L);
+            }
+        });
+    });
 }
