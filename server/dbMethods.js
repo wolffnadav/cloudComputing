@@ -99,9 +99,17 @@ module.exports = {
     },
 
 
-    //send a notification to all users how got infected that they are in risk and should be quarantine
+    //update the infected table with the details of the discovered infection
+    // this will trigger a lambada that sends SMS to all users who may be in risk and should be quarantine
     updateInfected: (param) => {
         //TODO - this should be a lambada function on AWS
+        dynamodb.updateItem(param, function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Infection discovered - store data - trigger lambada!");
+            }
+        })
     },
 
     // Get all BusinessName for drop down list

@@ -169,12 +169,35 @@ app.post('/api/insertNewPerson', function (req, res) {
 //user noticed that he got infected - this will send an alert to all users who are in risk
 //TODO
 app.post('/api/sendInfectedAlert', function (req, res) {
+    //convert milliseconds to date
+    let date = new Date(parseInt(req.body.dateOfNotice)).toString();
+
+    console.log(date);
+    console.log(req.body.phoneNumber);
+
+
+    //entered the notice to the infected table
+    let updateInfectedTable = {
+        ExpressionAttributeNames: { "#D": "Date"},
+        ExpressionAttributeValues: { ":D": {S: date} },
+        Key: {"PhoneNumber": {S: req.body.phoneNumber}},
+        TableName: "Infected",
+        UpdateExpression: "SET #D = :D"
+    };
+
+    db.updateInfected(updateInfectedTable);
+
+
     //find in which restaurants our user was during his infectious time
     //TODO
 
     //send a text message to all users that were in the same places our infectious user was
     //TODO
 
+    //send response back to front end
+    res.send({
+        "statusCode": "200"
+    });
 });
 
 

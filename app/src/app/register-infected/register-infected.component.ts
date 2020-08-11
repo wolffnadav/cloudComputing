@@ -17,7 +17,6 @@ export class RegisterInfectedComponent {
   constructor(private http: HttpClient) { }
 
   //when a user enter a notice of infection - alert all relevant user of their danger
-  //TODO - check date of notice (make it drop down or calender)
   sendInfectedAlert(){
     //first check the text box against unwanted characters - SQL injection protection
     //both text boxes must be filed
@@ -41,7 +40,7 @@ export class RegisterInfectedComponent {
     this.http.post<any>('/api/sendInfectedAlert', {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNoticeTimeStamp.toString()})
       .subscribe(data => {
         console.log(data.statusCode);
-        this.successAlert("Your notice was recorded, you will remain anonymous to all users :) ")
+        this.successAlert("Your notice was recorded, you will remain anonymous to all other users :) ")
       }, error => {
         console.error("sendInfectedAlert error: " + error.message);
         this.failAlert('Something went wrong!\nPlease try again..');
