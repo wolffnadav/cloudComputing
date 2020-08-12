@@ -88,7 +88,7 @@ app.post('/api/insertNewPerson', function (req, res) {
             }
             else {
                 // update the customer table with this transaction
-                let timeStamp = new Date().toString();
+                let timeStamp = new Date().getTime().toString();
                 let businessID = data.Item.ID.S;
                 updateCustomer(businessID, userName, email, phoneNumber, timeStamp);
 
@@ -172,8 +172,9 @@ app.post('/api/insertNewPerson', function (req, res) {
 //user noticed that he got infected - this will send an alert to all users who are in risk
 //TODO
 app.post('/api/sendInfectedAlert', function (req, res) {
+    // enter the infected user to the infected table to trigger the lambada function that sends all the users in danger SMS
     //convert milliseconds to date
-    let date = new Date(parseInt(req.body.dateOfNotice)).toString();
+    let date = new Date(parseInt(req.body.dateOfNotice)).getTime().toString();
     let phoneNumber = req.body.phoneNumber;
 
     //entered the notice to the infected table
@@ -188,14 +189,13 @@ app.post('/api/sendInfectedAlert', function (req, res) {
     db.updateInfected(updateInfectedTable);
 
     //find in which restaurants our user was during his infectious time
-    //TODO
-    let getBusinessParam = {
-        TableName: "Users",
-        Key: {"PhoneNumber": {"S": phoneNumber}},
-        ProjectionExpression: 'Visited'
-    }
-
     let getBusiness = new Promise((resolve, reject) => {
+        let getBusinessParam = {
+            TableName: "Users",
+            Key: {"PhoneNumber": {"S": phoneNumber}},
+            ProjectionExpression: 'Visited'
+        }
+        //get all the business that infected visited from users table
         dynamodb.getItem(getBusinessParam, function(err, data){
             if(err){
                 reject(console.log("error in getting infected businesses"));
@@ -203,89 +203,110 @@ app.post('/api/sendInfectedAlert', function (req, res) {
                 resolve(data.Item.Visited.L);
             }
         });
-    });
-
-    getBusiness.then(resolve => {
-        //init list of all the people who should be warned
-        let warningList = [];
-
-        //now resolve is an array of all of the users data got from the query above
-        resolve.forEach(async (element) => {
-            try {
-                //find out businessID and timeStamp
-                let businessID = element.SS[0];
-                let timeStamp = element.SS[1];
-                if (element.SS[0][element.SS[0].length - 1] === ')') {
-                    businessID = element.SS[1];
-                    timeStamp = element.SS[0];
-                }
-
-                //convert timeStamp to milliTime and calculate exit time - make use of global variable avgDuration
-                let infectedEntranceTime = Date.parse(timeStamp);
-                let infectedExitTime = infectedEntranceTime + (avgDuration * 1000 * 60);
-
-                // --  get phone number that need to be warned  --  //
-
-                // query the Business table for all the visitors that came to this business - this code is synchronized
-                let getBusinessVisitors = await queryBusinessTableForVisitors(businessID);
-
-                let flag = true;                    //flag to skip the dummy first entry in business Visited list
-                getBusinessVisitors.forEach(element => {
-                    if (flag) {
-                        //dummy skip this
-                        flag = false;
-                    } else {
-                        //else get the users phone number and time of entrance
-                        let userPhoneNumber = element.SS[0];
-                        let userEntrance = element.SS[1];
-                        if (userEntrance[userEntrance.length - 1] !== ')') {
-                            userPhoneNumber = element.SS[1];
-                            userEntrance = element.SS[0];
-                        }
-
-                        console.log("userPhoneNumber");
-                        console.log(userPhoneNumber);
-                        console.log("userEntrance");
-                        console.log(userEntrance);
-
-                        //convert time of entrance to milliseconds
-                        let userMilliTimeEntrance = Date.parse(userEntrance);
-
-                        //if the user was at the business when the infected person was add his phone number to warning list
-                        if (infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance) {
-                            warningList.push(userPhoneNumber);
-                        }
-                    }
-
-                });
-
-            } catch (err){
-                console.log("error caught in catch after await" + err);
+    }).then((resolve) => {
+        //filter the data to only relevant business
+        return resolve.map((element) => {
+            let businessID = element.SS[0];
+            let timeStamp = element.SS[1];
+            if (element.SS[0][element.SS[0].length - 1] === ')') {
+                businessID = element.SS[1];
+                timeStamp = element.SS[0];
             }
+
+            // convert timeStamp to milliTime and calculate exit time - make use of global variable avgDuration
+            let infectedEntranceTime = Date.parse(timeStamp);
+            let infectedExitTime = infectedEntranceTime + (avgDuration * 1000 * 60);
+
 
         });
 
-        console.log("warning List before removing duplicates");
-        console.log(warningList);
-        return warningList;
+    });
 
-    }).then(resolve => {
-        console.log(resolve);
-        //remove duplicates from resolve list
-        let uniqueSet = new Set(resolve);
-        console.log(uniqueSet);
-        //remove the infected person from the set
-        uniqueSet.delete(phoneNumber)
-
-        uniqueSet.forEach(element => {
-            console.log(element);
-        })
-        //send SMS to all the phones in resolve list
-
-
-    }).catch(reject => {
-        console.log(reject);
-    })
+    // getBusiness.then(resolve => {
+    //     //init list of all the people who should be warned
+    //     let warningList = [];
+    //
+    //     //now resolve is an array of all of the users data got from the query above
+    //     resolve.forEach(async (element) => {
+    //         try {
+    //             //find out businessID and timeStamp
+    //             let businessID = element.SS[0];
+    //             let timeStamp = element.SS[1];
+    //             if (element.SS[0][element.SS[0].length - 1] === ')') {
+    //                 businessID = element.SS[1];
+    //                 timeStamp = element.SS[0];
+    //             }
+    //
+    //             //convert timeStamp to milliTime and calculate exit time - make use of global variable avgDuration
+    //             let infectedEntranceTime = Date.parse(timeStamp);
+    //             let infectedExitTime = infectedEntranceTime + (avgDuration * 1000 * 60);
+    //
+    //             // --  get phone number that need to be warned  --  //
+    //
+    //             // query the Business table for all the visitors that came to this business - this code is synchronized
+    //             let getBusinessVisitors = await queryBusinessTableForVisitors(businessID);
+    //
+    //             let flag = true;                    //flag to skip the dummy first entry in business Visited list
+    //             let i = getBusinessVisitors.length;
+    //             let counter = 0;
+    //             getBusinessVisitors.forEach(element => {
+    //                 counter++;
+    //                 if (flag) {
+    //                     //dummy skip this
+    //                     flag = false;
+    //                 } else {
+    //                     //else get the users phone number and time of entrance
+    //                     let userPhoneNumber = element.SS[0];
+    //                     let userEntrance = element.SS[1];
+    //                     if (userEntrance[userEntrance.length - 1] !== ')') {
+    //                         userPhoneNumber = element.SS[1];
+    //                         userEntrance = element.SS[0];
+    //                     }
+    //
+    //                     // console.log("userPhoneNumber");
+    //                     // console.log(userPhoneNumber);
+    //                     // console.log("userEntrance");
+    //                     // console.log(userEntrance);
+    //
+    //                     //convert time of entrance to milliseconds
+    //                     let userMilliTimeEntrance = Date.parse(userEntrance);
+    //
+    //                     //if the user was at the business when the infected person was add his phone number to warning list
+    //                     if (infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance) {
+    //                         warningList.push(userPhoneNumber);
+    //                     }
+    //                 }
+    //
+    //             });
+    //
+    //             if(counter === 1) console.log("warning List before removing duplicates");
+    //             if(counter === 1) console.log(warningList);
+    //             if(counter === 1) return warningList;
+    //
+    //         } catch (err){
+    //             console.log("error caught in catch after await" + err);
+    //         }
+    //
+    //     });
+    //
+    // }).then(resolve => {
+    //     console.log("entered 2");
+    //     console.log(resolve);
+    //     //remove duplicates from resolve list
+    //     let uniqueSet = new Set(resolve);
+    //     console.log(uniqueSet);
+    //     //remove the infected person from the set
+    //     uniqueSet.delete(phoneNumber)
+    //
+    //     uniqueSet.forEach(element => {
+    //         console.log(element);
+    //     })
+    //     //send SMS to all the phones in resolve list
+    //
+    //
+    // }).catch(reject => {
+    //     console.log(reject);
+    // })
 
 
     //send a text message to all users that were in the same places our infectious user was
