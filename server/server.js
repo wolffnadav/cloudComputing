@@ -188,12 +188,6 @@ app.post('/api/sendInfectedAlert', function (req, res) {
 
     db.updateInfected(updateInfectedTable);
 
-    //send the data to API Gateway as well
-    app.post('https://2f8kczl7wl.execute-api.eu-west-1.amazonaws.com/live/infected-data', function(req, res) {
-
-    })
-
-
     //send response back to front end
     res.send({
         "statusCode": "200"
