@@ -14,8 +14,7 @@ export class RegisterPersonComponent implements OnInit {
   public userName: String;
   public userEmail: String;
   public businessEntered: String;
-  public isSubmit = false;
-  public qrImage = [];
+
   keyword = 'name';
   data = [];
 
@@ -64,7 +63,6 @@ export class RegisterPersonComponent implements OnInit {
       .subscribe(data => {
         console.log(data.statusCode);
         this.successAlert("You just managed to sign up :) ")
-        this.isSubmit = true;
       }, error => {
         console.error("insertNewPerson error: \n" + error.message);
         this.failAlert('Something went wrong!\nPlease try again..');
@@ -111,9 +109,7 @@ export class RegisterPersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isSubmit = false;
     this.getData();
-    this.getQrImage()
 
   }
 
@@ -121,19 +117,9 @@ export class RegisterPersonComponent implements OnInit {
     this.http.get<any>('/api/getBusinessesNames')
       .subscribe(res => {
         this.data = res.body;
-        this.getQrImage();
       }, error => {
         console.error("getBusinessesNames error: \n" + error.message);
       });
   }
 
-  private getQrImage() {
-    this.http.get<any>('/api/getQrImage')
-      .subscribe(data => {
-        debugger;
-        this.qrImage = data.images;
-      }, error => {
-        console.error("getQrImage error: \n" + error.message);
-      });
-  }
 }
