@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +71,7 @@
       <workItem from="1597058425790" duration="20604000" />
       <workItem from="1597140583680" duration="16399000" />
       <workItem from="1597165049056" duration="3325000" />
-      <workItem from="1597235001699" duration="14001000" />
-      <workItem from="1597304040776" duration="4688000" />
+      <workItem from="1597235001699" duration="13957000" />
     </task>
     <task id="LOCAL-00001" summary="first app">
       <created>1596524098078</created>
@@ -250,14 +248,7 @@
       <option name="project" value="LOCAL" />
       <updated>1597249104870</updated>
     </task>
-    <task id="LOCAL-00026" summary="lambda works on trigger">
-      <created>1597259134347</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1597259134347</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,8 +274,7 @@
     <MESSAGE value="trying to implement get phone of people to warn" />
     <MESSAGE value="working on infected SMS" />
     <MESSAGE value="converted all dates to milliseconds" />
-    <MESSAGE value="lambda works on trigger" />
-    <option name="LAST_COMMIT_MESSAGE" value="lambda works on trigger" />
+    <option name="LAST_COMMIT_MESSAGE" value="converted all dates to milliseconds" />
   </component>
   <component name="WindowStateProjectService">
     <state x="606" y="267" key="#File_Watchers" timestamp="1596919303874">
@@ -295,30 +285,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596710633636" />
-    <state x="393" y="10" key="CommitChangelistDialog2" timestamp="1597259133473">
+    <state x="393" y="10" key="CommitChangelistDialog2" timestamp="1597249103892">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="393" y="10" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597259133473" />
+    <state x="393" y="10" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597249103892" />
     <state x="437" y="211" key="EditFileWatcherDialog" timestamp="1596810281840">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="437" y="211" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1596810281840" />
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom" timestamp="1597306105282">
+    <state width="1515" height="226" key="GridCell.Tab.0.bottom" timestamp="1597259098506">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597306105282" />
-    <state width="1515" height="226" key="GridCell.Tab.0.center" timestamp="1597306105281">
+    <state width="1515" height="226" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
+    <state width="1515" height="226" key="GridCell.Tab.0.center" timestamp="1597259098506">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597306105281" />
-    <state width="1515" height="226" key="GridCell.Tab.0.left" timestamp="1597306105281">
+    <state width="1515" height="226" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
+    <state width="1515" height="226" key="GridCell.Tab.0.left" timestamp="1597259098506">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597306105281" />
-    <state width="1515" height="226" key="GridCell.Tab.0.right" timestamp="1597306105281">
+    <state width="1515" height="226" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
+    <state width="1515" height="226" key="GridCell.Tab.0.right" timestamp="1597259098506">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597306105281" />
+    <state width="1515" height="226" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
     <state width="1515" height="246" key="GridCell.Tab.1.bottom" timestamp="1597160578540">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -371,10 +361,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="280" y="50" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596901121760" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597259142657">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597249114695">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597259142657" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597249114695" />
     <state x="431" y="182" key="search.everywhere.popup" timestamp="1597082656211">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

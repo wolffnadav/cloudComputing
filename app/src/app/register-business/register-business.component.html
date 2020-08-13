@@ -10,3 +10,10 @@
   <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
 </div>
 
+
+<div class="qrImg" *ngIf="isSubmit">
+  <h4>Great having you on board!</h4>
+  <h6><a href="https://final-project-cloud.s3-eu-west-1.amazonaws.com/QRcode.png" target="_blank">Please download the QR barcode, and spread the word</a>
+  </h6>
+  <img class="images" src="{{qrImage[0]}}"/>
+</div>

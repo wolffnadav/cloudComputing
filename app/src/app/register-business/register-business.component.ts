@@ -8,6 +8,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./register-business.component.scss']
 })
 export class RegisterBusinessComponent {
+  public isSubmit = false;
+  public qrImage = [];
 
   //Business information
   public businessName: String;
@@ -33,8 +35,8 @@ export class RegisterBusinessComponent {
     this.http.post<any>('/api/insertNewBusiness', {businessname: this.businessName, address: this.businessAddress})
       .subscribe(data => {
         console.log(data.statusCode);
-        this.successAlert("You sign up your business :) ")
-
+        this.successAlert("You sign up your business :) ");
+        this.getQrImage()
       }, error => {
         console.error("insertNewBusiness error: " + error.message);
         this.failAlert('Something went wrong!\nPlease try again..');
@@ -59,6 +61,22 @@ export class RegisterBusinessComponent {
   alphaNumericCheck(inputTxt) {
     const letters = /^[0-9a-zA-Z ]+$/;
     return (inputTxt.match(letters));
+  }
+
+  ngOnInit() {
+    this.isSubmit = false;
+
+  }
+
+  private getQrImage() {
+    this.isSubmit = true;
+    this.http.get<any>('/api/getQrImage')
+      .subscribe(data => {
+        debugger;
+        this.qrImage = data.images;
+      }, error => {
+        console.error("getQrImage error: \n" + error.message);
+      });
   }
 
 }
