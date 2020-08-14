@@ -24,6 +24,12 @@ const s3 = new aws.S3({
     accessKeyId: config.accessKeyId,
     secretAccessKey: config.secretAccessKey
 });
+const stepfunctions = new aws.StepFunctions({
+    signatureVersion: 'v4',
+    region: config.region,
+    accessKeyId: config.accessKeyId,
+    secretAccessKey: config.secretAccessKey
+});
 
 //editable parameter - the average time user stays in a business
 let avgDuration = 30;
@@ -49,11 +55,13 @@ app.post('/api/insertNewBusiness', function (req, res) {
             "#N": "Name",
             "#V": "Visitors",
             "#A": "Address",
+            "#T": "Type",
             "#VL": "VisitorsList"
         },
         ExpressionAttributeValues: {
             ":F": {N: "0"},
             ":N": {S: req.body.businessname},
+            ":T": {S: req.body.type},
             ":V": {N: "0"},
             ":A": {S: req.body.address},
             ":VL": {L: [{SS: ["dummy", "dummy2"]}]}
@@ -61,7 +69,7 @@ app.post('/api/insertNewBusiness', function (req, res) {
         Key: {"ID": {S: newID.toString()}},
         ReturnValues: "ALL_NEW",
         TableName: "Businesses",
-        UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A, #VL = :VL"
+        UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A, #VL = :VL, #T = :T"
     };
     db.insertNewBusiness(insertNewBusinessParam, newID, req.body.businessname);
 
@@ -179,14 +187,29 @@ app.post('/api/sendInfectedAlert', function (req, res) {
 
     //entered the notice to the infected table
     let updateInfectedTable = {
-        ExpressionAttributeNames: { "#D": "Date"},
-        ExpressionAttributeValues: { ":D": {S: date} },
+        ExpressionAttributeNames: {"#D": "Date"},
+        ExpressionAttributeValues: {":D": {S: date}},
         Key: {"PhoneNumber": {S: phoneNumber}},
         TableName: "Infected",
         UpdateExpression: "SET #D = :D"
     };
 
     db.updateInfected(updateInfectedTable);
+
+    let message = {
+        PhoneNumber: phoneNumber,
+        date: date
+    };
+
+    let params = {
+        stateMachineArn: 'arn:aws:states:eu-west-1:257606365727:stateMachine:send-warning-setpfunction',
+        input: JSON.stringify(message)
+    };
+
+    stepfunctions.startExecution(params, function (err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else console.log(data);           // successful response
+    });
 
     //send response back to front end
     res.send({
@@ -221,7 +244,7 @@ app.get('/api/getBusinessesNames', function (req, res) {
             i++;
         })
         return bodyParam;
-    //step 3 - send back the data to the front end
+        //step 3 - send back the data to the front end
     }).then(resolve => {
         res.send({
             "statusCode": "200",
@@ -265,7 +288,7 @@ app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
 
 
 //this function gets BusinessID and timeStamp and returns the warning phone numbers from this specific business
-function getPhoneNumbersToWarn(businessID, timeStamp){
+function getPhoneNumbersToWarn(businessID, timeStamp) {
     let infectedEntranceTime = timeStamp;
     let infectedExitTime = timeStamp + (avgDuration * 1000 * 60)
 
@@ -277,8 +300,8 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
     }
 
     let getBusinessVisitors = new Promise((resolve, reject) => {
-        dynamodb.getItem(getBusinessVisitorsParam, function(err, data){
-            if(err){
+        dynamodb.getItem(getBusinessVisitorsParam, function (err, data) {
+            if (err) {
                 reject("error in getPhoneNumbersToWarn " + err);
             } else {
                 resolve(data.Item.VisitorsList.L);
@@ -291,13 +314,13 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
         //remember first item is a dummy
         let flag = true;
         resolve.forEach(element => {
-            if(flag){
+            if (flag) {
                 //dummy skip this
                 flag = false;
             } else {
                 let userPhoneNumber = element.SS[0];
                 let userEntrance = element.SS[1];
-                if(userEntrance[userEntrance.length - 1] !== ')'){
+                if (userEntrance[userEntrance.length - 1] !== ')') {
                     userPhoneNumber = element.SS[1];
                     userEntrance = element.SS[0];
                 }
@@ -305,7 +328,7 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
                 let userMilliTimeEntrance = Date.parse(userEntrance);
 
                 //if the user was at the business when the infected person was add his phone number to warning list
-                if(infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance){
+                if (infectedEntranceTime <= userMilliTimeEntrance && infectedExitTime >= userMilliTimeEntrance) {
                     warningPhoneNumbers.push(userPhoneNumber);
                 }
             }
@@ -319,7 +342,7 @@ function getPhoneNumbersToWarn(businessID, timeStamp){
     })
 }
 
-function queryBusinessTableForVisitors(businessID){
+function queryBusinessTableForVisitors(businessID) {
     //query the DB for all the visitors in this business
     let getBusinessVisitorsParam = {
         TableName: "Businesses",
@@ -328,8 +351,8 @@ function queryBusinessTableForVisitors(businessID){
     }
 
     return new Promise((resolve, reject) => {
-        dynamodb.getItem(getBusinessVisitorsParam, function(err, data){
-            if(err){
+        dynamodb.getItem(getBusinessVisitorsParam, function (err, data) {
+            if (err) {
                 reject("error in getPhoneNumbersToWarn " + err);
             } else {
                 resolve(data.Item.VisitorsList.L);
