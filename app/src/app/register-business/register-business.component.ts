@@ -12,7 +12,7 @@ export class RegisterBusinessComponent implements OnInit {
   public qrImage = [];
   keyword = 'name';
   data = [{"name": "Restaurants", "id": 0}, {"name": "Beach", "id": 1}, {"name": "Bar/Pub", "id": 2},
-    {"name": "Malls", "id": 3}, {"name": "Bus line", "id": 4}, {"name": "Train", "id": 5}, {"name": "GYM", "id": 6}];
+    {"name": "Shopping store", "id": 3}, {"name": "Bus line", "id": 4}, {"name": "Train", "id": 5}, {"name": "GYM", "id": 6}];
   public businessType: String;
 
   //Business information
