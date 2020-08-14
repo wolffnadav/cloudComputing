@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="Execute step functions works">
+    <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/assets/images/Confirm_Cases.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/sendInfectedMessages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/analytics/analytics.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/analytics/analytics.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/analytics/analytics.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/analytics/analytics.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,38 +17,41 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitIgnore" value="1" />
-          <entry key="html" value="1" />
+          <entry key="html" value="6" />
+          <entry key="jpeg" value="1" />
           <entry key="js" value="1" />
           <entry key="md" value="1" />
-          <entry key="scss" value="2" />
+          <entry key="scss" value="7" />
           <entry key="ts" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="6" />
+          <entry key="Image" value="1" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="SCSS" value="2" />
+          <entry key="SCSS" value="7" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitIgnore" value="4" />
-          <entry key="html" value="25" />
+          <entry key="html" value="125" />
           <entry key="js" value="14" />
-          <entry key="scss" value="5" />
-          <entry key="ts" value="75" />
+          <entry key="scss" value="36" />
+          <entry key="ts" value="89" />
+          <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="25" />
+          <entry key="HTML" value="125" />
           <entry key="JavaScript" value="14" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="SCSS" value="5" />
-          <entry key="TypeScript" value="75" />
+          <entry key="PLAIN_TEXT" value="38" />
+          <entry key="SCSS" value="36" />
+          <entry key="TypeScript" value="89" />
         </counts>
       </usages-collector>
     </session>
@@ -58,31 +59,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/server.js">
+        <entry file="file://$PROJECT_DIR$/app/src/app/analytics/analytics.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2220">
-              <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+            <state relative-caret-position="45">
+              <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts">
+        <entry file="file://$PROJECT_DIR$/app/src/app/analytics/analytics.component.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="42" column="10" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-end-line="11" />
+            <state relative-caret-position="105">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -110,8 +99,10 @@
         <option value="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" />
         <option value="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" />
         <option value="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" />
-        <option value="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" />
         <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" />
+        <option value="$PROJECT_DIR$/app/src/app/analytics/analytics.component.scss" />
+        <option value="$PROJECT_DIR$/app/src/app/analytics/analytics.component.html" />
       </list>
     </option>
   </component>
@@ -163,15 +154,22 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="register-business" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloudComputing" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputing" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="register-person" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputing" type="b2602c69:ProjectViewProjectNode" />
@@ -183,6 +181,11 @@
         </subPane>
       </pane>
     </panes>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/assets/images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -237,19 +240,19 @@
       <option name="project" value="LOCAL" />
       <updated>1597323511100</updated>
     </task>
-    <task id="LOCAL-00002" summary="test commit">
-      <created>1596719623910</created>
+    <task id="LOCAL-00002" summary="Add type dropdown to business type">
+      <created>1597391036107</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1596719623910</updated>
+      <updated>1597391036107</updated>
     </task>
-    <task id="LOCAL-00003" summary="finidhed updateNewPerson">
-      <created>1596721383176</created>
+    <task id="LOCAL-00003" summary="Add type dropdown to business type">
+      <created>1597391099317</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1596721383176</updated>
+      <updated>1597391099317</updated>
     </task>
     <task id="LOCAL-00004" summary="fixed unique id problem">
       <created>1596746818321</created>
@@ -412,28 +415,28 @@
       <option name="project" value="LOCAL" />
       <updated>1597323408939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2925000" />
+    <option name="totallyTimeSpent" value="3725000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17962629" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17962629" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49964765" visible="true" weight="0.276907" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49964765" weight="0.276907" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31226766" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32961586" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4996986" weight="0.28526646" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4996986" visible="true" weight="0.28526646" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" weight="0.3030303" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5015069" side_tool="true" weight="0.3030303" />
@@ -463,7 +466,8 @@
     <MESSAGE value="working on infected SMS" />
     <MESSAGE value="converted all dates to milliseconds" />
     <MESSAGE value="Execute step functions works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Execute step functions works" />
+    <MESSAGE value="Add type dropdown to business type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add type dropdown to business type" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
@@ -505,13 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/app/app.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -543,20 +540,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2967">
+          <caret line="228" column="54" lean-forward="true" selection-start-line="228" selection-start-column="54" selection-end-line="228" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/assets/images/Confirm_Cases.jpeg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="42" column="10" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="10" />
+        <state relative-caret-position="210">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.js">
+    <entry file="file://$PROJECT_DIR$/app/src/app/app.component.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2220">
-          <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+        <state relative-caret-position="180">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/home/home.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/analytics/analytics.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/app/analytics/analytics.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
         </state>
       </provider>
     </entry>
