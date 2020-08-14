@@ -1,10 +1,34 @@
-
 <! -- business register component -->
 <div class="form-group" id="first-div">
   <H4><u>Insert Business:</u></H4>
   <ul style="list-style: none;">
-    <li>Name of business: <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname" placeholder="NAME" required name="name"></li>
-    <li>Address of business: <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address" placeholder="ADDRESS" required name="name"></li>
+    <li>Name of business: <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname"
+                                 placeholder="NAME" required name="name"></li>
+    <li>Address of business: <input [(ngModel)]="businessAddress" type="text" class="form-control" id="address"
+                                    placeholder="ADDRESS" required name="name"></li>
+    <li>Type of business:
+      <div class="ng-autocomplete dropdown">
+        <ng-autocomplete
+          [data]="data"
+          [searchKeyword]="keyword"
+          (selected)='selectEvent($event)'
+          (inputChanged)='onChangeSearch($event)'
+          (inputFocused)='onFocused($event)'
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate"
+          [placeHolder]="'Business Type'">
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+        <br>
+      </div>
+    </li>
   </ul>
   <br>
   <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
@@ -13,7 +37,8 @@
 
 <div class="qrImg" *ngIf="isSubmit">
   <h4>Great having you on board!</h4>
-  <h6><a href="https://final-project-cloud.s3-eu-west-1.amazonaws.com/QRcode.png" target="_blank">Please download the QR barcode, and spread the word</a>
+  <h6><a href="https://final-project-cloud.s3-eu-west-1.amazonaws.com/QRcode.png" target="_blank">Please download the QR
+    barcode, and spread the word</a>
   </h6>
   <img class="images" src="{{qrImage[0]}}"/>
 </div>

@@ -55,11 +55,13 @@ app.post('/api/insertNewBusiness', function (req, res) {
             "#N": "Name",
             "#V": "Visitors",
             "#A": "Address",
+            "#T": "Type",
             "#VL": "VisitorsList"
         },
         ExpressionAttributeValues: {
             ":F": {N: "0"},
             ":N": {S: req.body.businessname},
+            ":T": {S: req.body.type},
             ":V": {N: "0"},
             ":A": {S: req.body.address},
             ":VL": {L: [{SS: ["dummy", "dummy2"]}]}
@@ -67,7 +69,7 @@ app.post('/api/insertNewBusiness', function (req, res) {
         Key: {"ID": {S: newID.toString()}},
         ReturnValues: "ALL_NEW",
         TableName: "Businesses",
-        UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A, #VL = :VL"
+        UpdateExpression: "SET #F = :F, #N = :N, #V = :V, #A = :A, #VL = :VL, #T = :T"
     };
     db.insertNewBusiness(insertNewBusinessParam, newID, req.body.businessname);
 
