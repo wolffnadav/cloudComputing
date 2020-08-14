@@ -8,8 +8,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class AppComponent {
 
-  title = 'Gai';
-
   constructor() {
 
   }
