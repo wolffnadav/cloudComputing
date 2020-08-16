@@ -1,6 +1,6 @@
 <! -- business register component -->
 <div class="form-group" id="first-div">
-  <H4><u>Insert Business:</u></H4>
+  <H3><u>Insert Business:</u></H3>
   <ul style="list-style: none;">
     <li>Name of business: <input [(ngModel)]="businessName" type="text" class="form-control" id="businessname"
                                  placeholder="NAME" required name="name"></li>
@@ -16,7 +16,7 @@
           (inputFocused)='onFocused($event)'
           [itemTemplate]="itemTemplate"
           [notFoundTemplate]="notFoundTemplate"
-          [placeHolder]="'Business Type'">
+          [placeHolder]="'BUSINESS TYPE'">
         </ng-autocomplete>
 
         <ng-template #itemTemplate let-item>

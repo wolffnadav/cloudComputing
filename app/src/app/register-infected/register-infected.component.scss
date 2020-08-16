@@ -15,4 +15,17 @@
 }
 .md-input-container label {
   color: red;
+  font-size: 1rem;
+}
+
+li{
+  min-width: 100%;
+  width: auto;
+  height: 75px;
+  display: inline-block;
+}
+
+ul {
+  min-width: 100%;
+  padding: 0;
 }

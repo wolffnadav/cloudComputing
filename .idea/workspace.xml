@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +26,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
-  </component>
+  <component name="ProjectId" id="1gAzQpeVpD3bKX2YIjAfORAfQxm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -53,6 +52,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -262,6 +262,9 @@
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -284,25 +287,30 @@
     <MESSAGE value="converted all dates to milliseconds" />
     <MESSAGE value="Execute step functions works" />
     <MESSAGE value="Add type dropdown to business type" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add type dropdown to business type" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom" timestamp="1597416565068">
+    <state x="285" y="0" key="CommitChangelistDialog2" timestamp="1597572224638">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597416565068" />
-    <state width="1515" height="226" key="GridCell.Tab.0.center" timestamp="1597416565067">
+    <state x="285" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597572224638" />
+    <state width="1515" height="224" key="GridCell.Tab.0.bottom" timestamp="1597572277175">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
-    <state width="1515" height="226" key="GridCell.Tab.0.left" timestamp="1597416565067">
+    <state width="1515" height="224" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
+    <state width="1515" height="224" key="GridCell.Tab.0.center" timestamp="1597572277175">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
-    <state width="1515" height="226" key="GridCell.Tab.0.right" timestamp="1597416565067">
+    <state width="1515" height="224" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
+    <state width="1515" height="224" key="GridCell.Tab.0.left" timestamp="1597572277175">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
+    <state width="1515" height="224" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
+    <state width="1515" height="224" key="GridCell.Tab.0.right" timestamp="1597572277175">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1515" height="224" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
     <state x="149" y="70" key="MergeDialog" timestamp="1597403720655">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -311,5 +319,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="409" y="195" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1597403720663" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597572249435">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597572249435" />
   </component>
 </project>

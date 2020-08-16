@@ -18,5 +18,17 @@
 }
 
 .autocomplete-container {
-  box-shadow: 0 0 0 0
+  box-shadow: 0 0 0 0;
+}
+
+li{
+  min-width: 100%;
+  width: auto;
+  height: 75px;
+  display: inline-block;
+}
+
+ul {
+  min-width: 100%;
+  padding: 0;
 }
