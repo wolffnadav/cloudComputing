@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dbMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dbMethods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,13 +283,14 @@
     <MESSAGE value="Execute step functions works" />
     <MESSAGE value="Add type dropdown to business type" />
     <MESSAGE value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
+    <MESSAGE value="small html fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small html fixes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="285" y="0" key="CommitChangelistDialog2" timestamp="1597572224638">
+    <state x="285" y="0" key="CommitChangelistDialog2" timestamp="1597573807931">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="285" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597572224638" />
+    <state x="285" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597573807931" />
     <state width="1515" height="224" key="GridCell.Tab.0.bottom" timestamp="1597572277175">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -319,9 +315,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="409" y="195" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1597403720663" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597572249435">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597573815649">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597572249435" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597573815649" />
   </component>
 </project>

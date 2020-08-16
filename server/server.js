@@ -18,6 +18,10 @@ const dynamodb = new aws.DynamoDB({
     secretAccessKey: config.secretAccessKey
 });
 
+//editable parameter - the average time user stays in a business
+let avgDuration = 30;
+
+
 // Cross Origin middleware
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
@@ -25,22 +29,22 @@ app.use(function(req, res, next) {
     next()
 });
 
-
+// connection to S3 bucket with QR code for the business
 const s3 = new aws.S3({
     signatureVersion: 'v4',
     region: config.region,
     accessKeyId: config.accessKeyId,
     secretAccessKey: config.secretAccessKey
 });
-const stepfunctions = new aws.StepFunctions({
+
+// Connection to the step function that triggers the infection notice SMS to users
+const stepFunctions = new aws.StepFunctions({
     signatureVersion: 'v4',
     region: config.region,
     accessKeyId: config.accessKeyId,
     secretAccessKey: config.secretAccessKey
 });
 
-//editable parameter - the average time user stays in a business
-let avgDuration = 30;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -119,7 +123,7 @@ app.post('/api/insertNewPerson', function (req, res) {
                     },
                     ExpressionAttributeValues: {
                         // ":F": {N: "0"},
-                        // ":N": {S: req.body.businessname},
+                        // ":N": {S: req.body.businessName},
                         // ":V": {N: "0"},
                         // ":A": {S: req.body.address},
                         ":VL": {L: [{SS: [timeStamp, phoneNumber]}]}
@@ -185,8 +189,9 @@ app.post('/api/insertNewPerson', function (req, res) {
 });
 
 
-//user noticed that he got infected - this will send an alert to all users who are in risk
-//TODO
+// user noticed that he got infected - this will send an alert to all users who are in risk
+// This function first adds the infected user to Infected Table and then it triggers a step function
+// made of 2 lambda function in python on AWS
 app.post('/api/sendInfectedAlert', function (req, res) {
     // enter the infected user to the infected table to trigger the lambada function that sends all the users in danger SMS
     //convert milliseconds to date
@@ -202,8 +207,10 @@ app.post('/api/sendInfectedAlert', function (req, res) {
         UpdateExpression: "SET #D = :D"
     };
 
+    //update infected table
     db.updateInfected(updateInfectedTable);
 
+    //payload to step function - this info is needed to find the user who are in danger
     let message = {
         PhoneNumber: phoneNumber,
         date: date
@@ -214,7 +221,8 @@ app.post('/api/sendInfectedAlert', function (req, res) {
         input: JSON.stringify(message)
     };
 
-    stepfunctions.startExecution(params, function (err, data) {
+    //trigger to the AWS step function
+    stepFunctions.startExecution(params, function (err, data) {
         if (err) console.log(err, err.stack); // an error occurred
         else console.log(data);           // successful response
     });

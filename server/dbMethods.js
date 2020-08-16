@@ -11,17 +11,17 @@ const dynamodb = new aws.DynamoDB({
 //export all the function inside this module
 module.exports = {
 
-    //Checks whether the given TableName exists
-    // isTableExist: () => {
-    //     let params = { TableName: 'Businesses' };
-    //     dynamodb.waitFor('tableExists', params, function (err, data) {
-    //         if (err) console.log(err, err.stack); // an error occurred
-    //         else {
-    //             console.log("Connect to DynamoDb Successful!! :) ");
-    //             console.log(data);           // successful response
-    //         }
-    //     });
-    // },
+    // Checks whether the given TableName exists
+    doesTableExist: () => {
+        let params = { TableName: 'Businesses' };
+        dynamodb.waitFor('tableExists', params, function (err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else {
+                console.log("Connect to DynamoDb Successful!! :) ");
+                console.log(data);           // successful response
+            }
+        });
+    },
 
 
     //insert a new Business to the DB or if the business is in the DB we update only the Customer list
@@ -100,9 +100,8 @@ module.exports = {
 
 
     //update the infected table with the details of the discovered infection
-    // this will trigger a lambada that sends SMS to all users who may be in risk and should be quarantine
     updateInfected: (param) => {
-        //TODO - this should be a lambada function on AWS
+        //update the infected table
         dynamodb.updateItem(param, function (err, data) {
             if (err) {
                 console.log(err);
