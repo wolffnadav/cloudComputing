@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="">
+    <list default="true" id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-business/register-business.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-infected/register-infected.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/app/register-person/register-person.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>keyword</find>
+      <find>data</find>
+      <find>businessEntered</find>
+      <find>insertNewBusiness</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/app/node_modules" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
-  <component name="ProjectId" id="1fe3zoaWdIFdNsxTyNOuWjzYeNU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="ts.external.directory.path" value="C:\Users\GuyPc\Downloads\Cloud Computing\sandBox\NadavAngularWebsite\cloudComputing\app\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/src/assets/images" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server/server.js" working-dir="$PROJECT_DIR$/server">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/server">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -48,7 +53,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -73,26 +77,26 @@
       <workItem from="1597165049056" duration="3325000" />
       <workItem from="1597235001699" duration="13957000" />
     </task>
-    <task id="LOCAL-00001" summary="first app">
-      <created>1596524098078</created>
+    <task id="LOCAL-00001" summary="Execute step functions works">
+      <created>1597323511100</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1596524098078</updated>
+      <updated>1597323511100</updated>
     </task>
-    <task id="LOCAL-00002" summary="test commit">
-      <created>1596719623910</created>
+    <task id="LOCAL-00002" summary="Add type dropdown to business type">
+      <created>1597391036107</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1596719623910</updated>
+      <updated>1597391036107</updated>
     </task>
-    <task id="LOCAL-00003" summary="finidhed updateNewPerson">
-      <created>1596721383176</created>
+    <task id="LOCAL-00003" summary="Add type dropdown to business type">
+      <created>1597391099317</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1596721383176</updated>
+      <updated>1597391099317</updated>
     </task>
     <task id="LOCAL-00004" summary="fixed unique id problem">
       <created>1596746818321</created>
@@ -248,11 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1597249104870</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Execute step functions works">
+      <created>1597323408939</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1597323408939</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -274,100 +282,34 @@
     <MESSAGE value="trying to implement get phone of people to warn" />
     <MESSAGE value="working on infected SMS" />
     <MESSAGE value="converted all dates to milliseconds" />
-    <option name="LAST_COMMIT_MESSAGE" value="converted all dates to milliseconds" />
+    <MESSAGE value="Execute step functions works" />
+    <MESSAGE value="Add type dropdown to business type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add type dropdown to business type" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="606" y="267" key="#File_Watchers" timestamp="1596919303874">
+    <state width="1515" height="226" key="GridCell.Tab.0.bottom" timestamp="1597416565068">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="606" y="267" key="#File_Watchers/0.0.1536.864@0.0.1536.864" timestamp="1596919303874" />
-    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596710633636">
+    <state width="1515" height="226" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597416565068" />
+    <state width="1515" height="226" key="GridCell.Tab.0.center" timestamp="1597416565067">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="225" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596710633636" />
-    <state x="393" y="10" key="CommitChangelistDialog2" timestamp="1597249103892">
+    <state width="1515" height="226" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
+    <state width="1515" height="226" key="GridCell.Tab.0.left" timestamp="1597416565067">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="393" y="10" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597249103892" />
-    <state x="437" y="211" key="EditFileWatcherDialog" timestamp="1596810281840">
+    <state width="1515" height="226" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
+    <state width="1515" height="226" key="GridCell.Tab.0.right" timestamp="1597416565067">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="437" y="211" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1596810281840" />
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom" timestamp="1597259098506">
+    <state width="1515" height="226" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597416565067" />
+    <state x="149" y="70" key="MergeDialog" timestamp="1597403720655">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
-    <state width="1515" height="226" key="GridCell.Tab.0.center" timestamp="1597259098506">
+    <state x="149" y="70" key="MergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1597403720655" />
+    <state x="409" y="195" key="MultipleFileMergeDialog" timestamp="1597403720663">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
-    <state width="1515" height="226" key="GridCell.Tab.0.left" timestamp="1597259098506">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
-    <state width="1515" height="226" key="GridCell.Tab.0.right" timestamp="1597259098506">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="226" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597259098506" />
-    <state width="1515" height="246" key="GridCell.Tab.1.bottom" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.1.center" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.1.left" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.1.right" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.2.bottom" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.2.center" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.2.left" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.2.right" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.3.bottom" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.3.center" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.center/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.3.left" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.left/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state width="1515" height="246" key="GridCell.Tab.3.right" timestamp="1597160578540">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1515" height="246" key="GridCell.Tab.3.right/0.0.1536.864@0.0.1536.864" timestamp="1597160578540" />
-    <state x="280" y="50" key="SettingsEditor" timestamp="1596901121760">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="280" y="50" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596901121760" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597249114695">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597249114695" />
-    <state x="431" y="182" key="search.everywhere.popup" timestamp="1597082656211">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="431" y="182" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1597082656211" />
+    <state x="409" y="195" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1597403720663" />
   </component>
 </project>

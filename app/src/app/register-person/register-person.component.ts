@@ -8,6 +8,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./register-person.component.scss']
 })
 export class RegisterPersonComponent implements OnInit {
+  API = 'http://localhost:3000';
 
   //User info
   public userPhoneNumber: String;
@@ -54,7 +55,7 @@ export class RegisterPersonComponent implements OnInit {
 
     //after input is valid send the data to the backend server
     debugger
-    this.http.post<any>('/api/insertNewPerson', {
+    this.http.post<any>(`${this.API}/api/insertNewPerson`, {
       number: this.userPhoneNumber,
       username: this.userName,
       email: this.userEmail,
@@ -114,7 +115,7 @@ export class RegisterPersonComponent implements OnInit {
   }
 
   private getData() {
-    this.http.get<any>('/api/getBusinessesNames')
+    this.http.get<any>(`${this.API}/api/getBusinessesNames`)
       .subscribe(res => {
         this.data = res.body;
       }, error => {

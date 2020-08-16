@@ -14,6 +14,7 @@ export class RegisterBusinessComponent implements OnInit {
   data = [{"name": "Restaurants", "id": 0}, {"name": "Beach", "id": 1}, {"name": "Bar/Pub", "id": 2},
     {"name": "Shopping store", "id": 3}, {"name": "Bus line", "id": 4}, {"name": "Train", "id": 5}, {"name": "GYM", "id": 6}];
   public businessType: String;
+  API = 'http://localhost:3000';
 
   //Business information
   public businessName: String;
@@ -37,7 +38,7 @@ export class RegisterBusinessComponent implements OnInit {
     }
 
     //after input is valid send the data to the backend server
-    this.http.post<any>('/api/insertNewBusiness', {
+    this.http.post<any>(`${this.API}/api/insertNewBusiness`, {
       businessname: this.businessName,
       address: this.businessAddress,
       type: this.businessType
@@ -82,7 +83,7 @@ export class RegisterBusinessComponent implements OnInit {
 
   private getQrImage() {
     this.isSubmit = true;
-    this.http.get<any>('/api/getQrImage')
+    this.http.get<any>(`${this.API}/api/getQrImage`)
       .subscribe(data => {
         debugger;
         this.qrImage = data.images;
