@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/server/dbMethods.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dbMethods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+    <list default="true" id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="order of code and comments updated">
+      <change afterPath="$PROJECT_DIR$/app/src/assets/fightTogether.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +53,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="46705264-6993-438e-a201-457b911d8f36" name="Default Changelist" comment="" />
+      <changelist id="53a1788a-f66c-4486-854a-43655a6de1fb" name="Default Changelist" comment="order of code and comments updated" />
       <created>1596523139748</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -71,6 +71,8 @@
       <workItem from="1597140583680" duration="16399000" />
       <workItem from="1597165049056" duration="3325000" />
       <workItem from="1597235001699" duration="13957000" />
+      <workItem from="1597686410504" duration="2221000" />
+      <workItem from="1597755670194" duration="775000" />
     </task>
     <task id="LOCAL-00001" summary="Execute step functions works">
       <created>1597323511100</created>
@@ -284,29 +286,30 @@
     <MESSAGE value="Add type dropdown to business type" />
     <MESSAGE value="Merge branch 'master' of https://github.com/wolffnadav/cloudComputing&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml" />
     <MESSAGE value="small html fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small html fixes" />
+    <MESSAGE value="order of code and comments updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="order of code and comments updated" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="285" y="0" key="CommitChangelistDialog2" timestamp="1597573807931">
+    <state x="285" y="0" key="CommitChangelistDialog2" timestamp="1597686428008">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="285" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597573807931" />
-    <state width="1515" height="224" key="GridCell.Tab.0.bottom" timestamp="1597572277175">
+    <state x="285" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1597686428008" />
+    <state width="1515" height="224" key="GridCell.Tab.0.bottom" timestamp="1597693684495">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="224" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
-    <state width="1515" height="224" key="GridCell.Tab.0.center" timestamp="1597572277175">
+    <state width="1515" height="224" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597693684495" />
+    <state width="1515" height="224" key="GridCell.Tab.0.center" timestamp="1597693684495">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="224" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
-    <state width="1515" height="224" key="GridCell.Tab.0.left" timestamp="1597572277175">
+    <state width="1515" height="224" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597693684495" />
+    <state width="1515" height="224" key="GridCell.Tab.0.left" timestamp="1597693684495">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="224" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
-    <state width="1515" height="224" key="GridCell.Tab.0.right" timestamp="1597572277175">
+    <state width="1515" height="224" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597693684495" />
+    <state width="1515" height="224" key="GridCell.Tab.0.right" timestamp="1597693684495">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="224" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597572277175" />
+    <state width="1515" height="224" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597693684495" />
     <state x="149" y="70" key="MergeDialog" timestamp="1597403720655">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -315,9 +318,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="409" y="195" key="MultipleFileMergeDialog/0.0.1536.864@0.0.1536.864" timestamp="1597403720663" />
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597573815649">
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2" timestamp="1597574797952">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597573815649" />
+    <state x="362" y="166" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1597574797952" />
   </component>
 </project>
