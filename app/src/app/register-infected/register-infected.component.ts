@@ -8,7 +8,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./register-infected.component.scss']
 })
 export class RegisterInfectedComponent {
-  API = 'http://localhost:3000';
 
   //Notice Info
   public phoneNumber: String;
@@ -38,7 +37,7 @@ export class RegisterInfectedComponent {
     this.dateOfNoticeTimeStamp = new Date(this.dateOfNotice).getTime();
 
     //after input is valid send the data to the backend server
-    this.http.post<any>(`${this.API}/api/sendInfectedAlert`, {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNoticeTimeStamp.toString()})
+    this.http.post<any>('/api/sendInfectedAlert', {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNoticeTimeStamp.toString()})
       .subscribe(data => {
         console.log(data.statusCode);
         this.successAlert("Your notice was recorded, you will remain anonymous to all other users :) ")
