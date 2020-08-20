@@ -26,8 +26,8 @@ export class RegisterPersonComponent implements OnInit {
   insertNewPerson() {
     //First check the input is valid
     //All text boxes must be filed
-    if (this.userPhoneNumber == undefined || this.userName == undefined || this.userEmail == undefined) {
-      this.failAlert('Address, Name and Phone number must be filed!');
+    if (this.userPhoneNumber == undefined || this.userName == undefined || this.businessEntered == undefined || this.userEmail == undefined) {
+      this.failAlert('Address, Name, business and Phone number must be filed!');
       return;
     }
     //Check that all characters entered in Name fields are alphaNumeric
