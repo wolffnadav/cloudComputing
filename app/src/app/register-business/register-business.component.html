@@ -1,4 +1,3 @@
-<! -- business register component -->
 <div class="form-group" id="first-div">
   <H3><u>Insert Business:</u></H3>
   <ul style="list-style: none;">
@@ -9,7 +8,7 @@
     <li>Type of business:
       <div class="ng-autocomplete dropdown">
         <ng-autocomplete
-          [data]="data"
+          [data]="businessesTypeList"
           [searchKeyword]="keyword"
           (selected)='selectEvent($event)'
           (inputChanged)='onChangeSearch($event)'
@@ -24,7 +23,7 @@
         </ng-template>
 
         <ng-template #notFoundTemplate let-notFound>
-          <div [innerHTML]="notFound"></div>
+          <div [innerHTML]="notFound" class=""></div>
         </ng-template>
         <br>
       </div>
@@ -33,7 +32,6 @@
   <br>
   <button type="submit" (click)="insertNewBusiness()" class="btn btn-primary">Register</button>
 </div>
-
 
 <div class="qrImg" *ngIf="isSubmit">
   <h4>Great having you on board!</h4>

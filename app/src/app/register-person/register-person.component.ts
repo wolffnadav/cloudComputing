@@ -13,30 +13,29 @@ export class RegisterPersonComponent implements OnInit {
   public userPhoneNumber: String;
   public userName: String;
   public userEmail: String;
-  public businessEntered: String;
+  public businessEntered: string;
 
-  keyword = 'name';
-  data = [];
+  //Businesses info
+  public keyword = 'name';
+  public businesses = [];
 
   constructor(private http: HttpClient) {
   }
 
-
-  //when customer scans a barcode this adds his visit to the Users table
+  //When customer scans a barcode this adds his visit to the Users table
   insertNewPerson() {
-    //first check the input is valid
-    //both text boxes must be filed
+    //First check the input is valid
+    //All text boxes must be filed
     if (this.userPhoneNumber == undefined || this.userName == undefined || this.userEmail == undefined) {
-      this.failAlert('Address and Name fields must be filed!');
+      this.failAlert('Address, Name and Phone number must be filed!');
       return;
     }
-    //check that all characters entered in Name and Business fields are alphaNumeric
+    //Check that all characters entered in Name fields are alphaNumeric
     if (!(this.alphaNumericCheck(this.userName))) {
       this.failAlert('Only characters and numbers are allowed\n in the Name field');
       return;
     }
-
-    //check phone number - important check - this is out primary key so it must be unique
+    //Check phone number - important check - this is our primary key so it must be unique and valid
     if (!this.numericCheck(this.userPhoneNumber)) {
       this.failAlert('Only numbers are allowed in Phone Number field');
       return;
@@ -46,36 +45,31 @@ export class RegisterPersonComponent implements OnInit {
       return;
     }
 
-    //check email
+    //Check email
     if (!this.emailCheck(this.userEmail)) {
       this.failAlert('The Email entered is not valid');
       return;
     }
-
-    //after input is valid send the data to the backend server
-    debugger
-    this.http.post<any>('/api/insertNewPerson', {
-      number: this.userPhoneNumber,
-      username: this.userName,
-      email: this.userEmail,
-      business: this.businessEntered
-    })
-      .subscribe(data => {
-        console.log(data.statusCode);
-        this.successAlert("You just managed to sign up :) ")
-      }, error => {
-        console.error("insertNewPerson error: \n" + error.message);
-        this.failAlert('Something went wrong!\nPlease try again..');
-
-      });
+    //If input is valid send the form data to server
+    this.http.post<any>('/api/insertNewPerson',
+      {
+        number: this.userPhoneNumber,
+        username: this.userName,
+        email: this.userEmail,
+        business: this.businessEntered
+      }).subscribe(data => {
+      this.successAlert("You just managed to sign up :) ")
+    }, error => {
+      this.failAlert('Something went wrong!\nPlease try again..');
+    });
   }
 
-  //success Alert after a business registered successfully
+  //Success general alert
   successAlert(message) {
     Swal.fire("Wow", message, "success");
   }
 
-  //failed alert pops if the registration failed, either the input given by the user was wrong or internal server error
+  //Failed general alert
   failAlert(text) {
     Swal.fire({
       icon: 'error',
@@ -84,19 +78,19 @@ export class RegisterPersonComponent implements OnInit {
     })
   }
 
-  //check that inputTxt is containing only characters and numbers
+  //Check that inputTxt is containing only characters and numbers
   alphaNumericCheck(inputTxt) {
     const letters = /^[0-9a-zA-Z ]+$/;
     return (inputTxt.match(letters));
   }
 
-  //check that all inputTxt is numbers
+  //Check that all inputTxt is numbers
   numericCheck(inputTxt) {
     const numbers = /^[0-9]+$/;
     return (inputTxt.match(numbers));
   }
 
-  //check that email is in correct form with '@' and '\.' in the text
+  //Check that email is in correct form with '@' and '\.' in the text
   emailCheck(inputTxt) {
     const letters = /^[0-9a-zA-Z@\.]+$/;
     if (!inputTxt.match('@')) return false;
@@ -104,22 +98,22 @@ export class RegisterPersonComponent implements OnInit {
     return (inputTxt.match(letters));
   }
 
+  //Save the business name choose from the businesses list
   selectEvent(item) {
     this.businessEntered = item.name;
   }
 
   ngOnInit() {
-    this.getData();
-
+    this.getBusinessesList();
   }
 
-  private getData() {
+  //Get All businesses list from db
+  private getBusinessesList() {
     this.http.get<any>('/api/getBusinessesNames')
       .subscribe(res => {
-        this.data = res.body;
+        this.businesses = res.body;
       }, error => {
         console.error("getBusinessesNames error: \n" + error.message);
       });
   }
-
 }

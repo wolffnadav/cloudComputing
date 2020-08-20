@@ -7,60 +7,59 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   templateUrl: './register-business.component.html',
   styleUrls: ['./register-business.component.scss']
 })
+
 export class RegisterBusinessComponent implements OnInit {
+
   public isSubmit = false;
   public qrImage = [];
-  keyword = 'name';
-  data = [{"name": "Restaurants", "id": 0}, {"name": "Beach", "id": 1}, {"name": "Bar/Pub", "id": 2},
-    {"name": "Shopping store", "id": 3}, {"name": "Bus line", "id": 4}, {"name": "Train", "id": 5}, {
-      "name": "GYM",
-      "id": 6
-    }];
-  public businessType: String;
+  public keyword = 'name';
 
   //Business information
   public businessName: String;
   public businessAddress: String;
+  public businessType: String;
+
+  public businessesTypeList = [{"name": "Restaurants", "id": 0}, {"name": "Beach", "id": 1},
+    {"name": "Bar/Pub", "id": 2}, {"name": "Shopping store", "id": 3}, {"name": "Bus line", "id": 4},
+    {"name": "Train", "id": 5}, {"name": "GYM", "id": 6}];
 
   constructor(private http: HttpClient) {
   }
 
-  //when business owner presses to register his business
+  //When business owner presses to register his business
   insertNewBusiness() {
-    //first check the input is valid
-    //both text boxes must be filed
-    if (this.businessAddress == undefined || this.businessName == undefined) {
-      this.failAlert('Address and Name fields must be filed!')
+    //First check the input is valid
+    //Both text boxes must be filed
+    if (this.businessAddress == undefined || this.businessType == undefined || this.businessName == undefined) {
+      this.failAlert('Business type, Address and Name fields must be filed!');
       return;
     }
-    //check that all characters entered are alphaNumeric
+    //Check that all characters entered are alphaNumeric
     if (!(this.alphaNumericCheck(this.businessName) && this.alphaNumericCheck(this.businessAddress))) {
       this.failAlert('Only characters and numbers are allowed');
       return;
     }
 
-    //after input is valid send the data to the backend server
+    //After input is valid send the data to server
     this.http.post<any>('/api/insertNewBusiness', {
       businessname: this.businessName,
       address: this.businessAddress,
       type: this.businessType
-    })
-      .subscribe(data => {
-        console.log(data.statusCode);
-        this.successAlert("You sign up your business :) ");
-        this.getQrImage()
-      }, error => {
-        console.error("insertNewBusiness error: " + error.message);
-        this.failAlert('Something went wrong!\nPlease try again..');
-      });
+    }).subscribe(data => {
+      console.log(data.statusCode);
+      this.successAlert("You sign up your business :) ");
+      this.getQrImage()
+    }, error => {
+      this.failAlert('Something went wrong!\nPlease try again..');
+    });
   }
 
-  //success Alert after a business registered successfully
+  //Success general alert
   successAlert(message) {
     Swal.fire("Wow", message, "success");
   }
 
-  //failed alert pops if the registration failed, either the input given by the user was wrong or internal server error
+  //Failed general alert
   failAlert(text) {
     Swal.fire({
       icon: 'error',
@@ -69,7 +68,7 @@ export class RegisterBusinessComponent implements OnInit {
     })
   }
 
-  //check that inputTxt is containing only characters and numbers
+  //Check that inputTxt is containing only characters and numbers
   alphaNumericCheck(inputTxt) {
     const letters = /^[0-9a-zA-Z ]+$/;
     return (inputTxt.match(letters));
@@ -79,19 +78,25 @@ export class RegisterBusinessComponent implements OnInit {
     this.isSubmit = false;
   }
 
+  //Save the business type choose from the businesses type list
   selectEvent(item) {
     this.businessType = item.name;
   }
 
+  onChangeSearch(val: string) {
+  }
+
+  onFocused(e){
+  }
+
+  //After successful sign up get the qr code from server (saves in s3)
   private getQrImage() {
     this.isSubmit = true;
-    this.http.get<any>('/api/getQrImage')
-      .subscribe(data => {
-        debugger;
-        this.qrImage = data.images;
-      }, error => {
-        console.error("getQrImage error: \n" + error.message);
-      });
+    this.http.get<any>('/api/getQrImage').subscribe(data => {
+      this.qrImage = data.images;
+    }, error => {
+      console.error("getQrImage error: \n" + error.message);
+    });
   }
 
 }

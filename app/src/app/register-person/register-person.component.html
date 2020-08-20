@@ -4,22 +4,25 @@
   <ul style="list-style: none;">
     <li>
       Phone Number:
-      <input [(ngModel)]="userPhoneNumber" type="text" class="form-control" id="number" placeholder="PHONE NUMBER" required
+      <input [(ngModel)]="userPhoneNumber" type="text" class="form-control" id="number" placeholder="PHONE NUMBER"
+             required
              name="name"/>
     </li>
     <li>
       Full Name:
-      <input [(ngModel)]="userName" type="text" class="form-control" id="username" placeholder="NAME" required name="name">
+      <input [(ngModel)]="userName" type="text" class="form-control" id="username" placeholder="NAME" required
+             name="name">
     </li>
     <li>
       Email Address:
-      <input [(ngModel)]="userEmail" type="text" class="form-control" id="email" placeholder="EMAIL" required name="name">
+      <input [(ngModel)]="userEmail" type="text" class="form-control" id="email" placeholder="EMAIL" required
+             name="name">
     </li>
     <li>
       Business Name:
       <div class="ng-autocomplete dropdown">
         <ng-autocomplete
-          [data]="data"
+          [data]="businesses"
           [searchKeyword]="keyword"
           (selected)='selectEvent($event)'
           (inputChanged)='onChangeSearch($event)'

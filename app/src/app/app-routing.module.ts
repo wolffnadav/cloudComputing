@@ -6,19 +6,19 @@ import {AnalyticsComponent} from "./analytics/analytics.component";
 import {RegisterPersonComponent} from "./register-person/register-person.component"
 import {RegisterInfectedComponent} from "./register-infected/register-infected.component";
 
-
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'newBusiness', component: RegisterBusinessComponent},
   {path: 'registerPerson', component: RegisterPersonComponent},
   {path: 'analytics', component: AnalyticsComponent},
   {path: 'registerInfected', component: RegisterInfectedComponent},
-  {path: '**', redirectTo: 'home'}
+  {path: '**', redirectTo: 'home'} // Default refer to home
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 }

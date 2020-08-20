@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
@@ -7,54 +7,56 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   templateUrl: './register-infected.component.html',
   styleUrls: ['./register-infected.component.scss']
 })
+
 export class RegisterInfectedComponent {
 
   //Notice Info
   public phoneNumber: String;
   public dateOfNotice: any;
   public dateOfNoticeTimeStamp: any;
-  public max = new Date();
-  constructor(private http: HttpClient) { }
+  public maxDate = new Date();
 
-  //when a user enter a notice of infection - alert all relevant user of their danger
-  sendInfectedAlert(){
-    //first check the text box against unwanted characters - SQL injection protection
-    //both text boxes must be filed
-    if(this.phoneNumber == undefined || this.dateOfNotice == undefined){
+  constructor(private http: HttpClient) {
+  }
+
+  //When a user enter a notice of infection - alert all relevant user
+  sendInfectedAlert() {
+    //First check the text box against unwanted characters - SQL injection protection
+    //Both text boxes must be filed
+    if (this.phoneNumber == undefined || this.dateOfNotice == undefined) {
       this.failAlert('Phone Number and Date of notice fields must be filed!')
       return;
     }
-    //check phone number - important check - this is out primary key so it must be unique
-    if(!this.numericCheck(this.phoneNumber)){
+    //Check phone number - important check - this is out primary key so it must be unique
+    if (!this.numericCheck(this.phoneNumber)) {
       this.failAlert('Only numbers are allowed in Phone Number field');
       return;
     }
-    if(this.phoneNumber.length != 10){
+    if (this.phoneNumber.length != 10) {
       this.failAlert('Phone number must contain exactly 10 Numbers');
       return;
     }
+
     //Change date to timestamp
     this.dateOfNoticeTimeStamp = new Date(this.dateOfNotice).getTime();
 
-    //after input is valid send the data to the backend server
-    this.http.post<any>('/api/sendInfectedAlert', {phoneNumber: this.phoneNumber, dateOfNotice: this.dateOfNoticeTimeStamp.toString()})
-      .subscribe(data => {
-        console.log(data.statusCode);
-        this.successAlert("Your notice was recorded, you will remain anonymous to all other users :) ")
-      }, error => {
-        console.error("sendInfectedAlert error: " + error.message);
-        this.failAlert('Something went wrong!\nPlease try again..');
-      });
+    //After input is valid send the data to server
+    this.http.post<any>('/api/sendInfectedAlert', {
+      phoneNumber: this.phoneNumber,
+      dateOfNotice: this.dateOfNoticeTimeStamp.toString()
+    }).subscribe(data => {
+      this.successAlert("Your notice was recorded, you will remain anonymous to all other users :) ")
+    }, error => {
+      this.failAlert('Something went wrong!\nPlease try again..');
+    });
   }
 
-  //  --  alert functions  --   //
-
-  //success Alert after a business registered successfully
+  //Success general alert
   successAlert(message) {
     Swal.fire("Wow", message, "success");
   }
 
-  //failed alert pops if the registration failed, either the input given by the user was wrong or internal server error
+  //Failed general alert
   failAlert(text) {
     Swal.fire({
       icon: 'error',
@@ -63,10 +65,9 @@ export class RegisterInfectedComponent {
     })
   }
 
-  //check that all inputTxt is numbers
+  //Check that all inputTxt is numbers
   numericCheck(inputTxt) {
     const numbers = /^[0-9]+$/;
     return (inputTxt.match(numbers));
   }
-
 }
